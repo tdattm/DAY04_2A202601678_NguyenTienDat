@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import json
+from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 import streamlit as st
 
@@ -111,7 +112,7 @@ def sidebar_config() -> dict[str, Any]:
     )
     model = st.sidebar.text_input("Model (để trống = default của provider)", value="")
     version = st.sidebar.text_input(
-        "Version label", value="v0", help="Nhãn version dùng cho eval/report, ví dụ v0/v1/v2/v3."
+        "Version label", value="v8", help="Nhãn version dùng cho eval/report, ví dụ v0/v1/v2/v3."
     )
     system_prompt_rel = st.sidebar.text_input(
         "system_prompt.md",
@@ -249,6 +250,27 @@ def handle_user_message(user_text: str) -> None:
 # Rendering
 # --------------------------------------------------------------------------- #
 
+# Chiều rộng bong bóng chat so với phần đệm (spacer) cùng hàng — dùng để đẩy
+# bong bóng user sang phải và bong bóng assistant sang trái, kiểu 2 phía.
+BUBBLE_RATIO = [1, 4]
+
+
+@contextmanager
+def user_bubble() -> Iterator[None]:
+    spacer, bubble = st.columns(BUBBLE_RATIO)
+    with bubble:
+        with st.chat_message("user"):
+            yield
+
+
+@contextmanager
+def assistant_bubble() -> Iterator[None]:
+    bubble, spacer = st.columns(BUBBLE_RATIO[::-1])
+    with bubble:
+        with st.chat_message("assistant"):
+            yield
+
+
 def status_of(event: dict[str, Any]) -> str:
     result = event.get("result")
     if isinstance(result, dict):
@@ -273,9 +295,9 @@ def render_trace(rounds: list[dict[str, Any]]) -> None:
 
 
 def render_turn(turn: dict[str, Any]) -> None:
-    with st.chat_message("user"):
+    with user_bubble():
         st.write(turn["user"])
-    with st.chat_message("assistant"):
+    with assistant_bubble():
         badge = TURN_BADGE.get(turn.get("status", ""), turn.get("status", "?"))
         st.caption(f"{badge} · turn {turn['turn_index']} · artifact_version `{turn.get('artifact_version', '?')}`")
         if turn.get("status") == "provider_error":
@@ -313,12 +335,16 @@ def render_chat_view(cfg: dict[str, Any]) -> None:
         "Hỏi về một chủ đề nghiên cứu, một paper arXiv cụ thể, hoặc một thuật ngữ..."
     )
     if user_text:
-        error = ensure_transcript(cfg)
-        if error:
-            st.error(error)
-        else:
+        with user_bubble():
+            st.write(user_text)
+        with assistant_bubble():
             with st.spinner("Agent đang xử lý..."):
-                handle_user_message(user_text)
+                error = ensure_transcript(cfg)
+                if not error:
+                    handle_user_message(user_text)
+            if error:
+                st.error(error)
+        if not error:
             st.rerun()
 
 
