@@ -1,0 +1,284 @@
+{
+  "transcript_id": "v2_openai_20260729T161659732320",
+  "version": "v2",
+  "artifact_version": "v2+p0ef447e13a7a+t0bcbb34f802c",
+  "prompt_hash": "0ef447e13a7a6194d7dddb4abeb203debc6e688cb11551ec8aaab04aeb52ec31",
+  "tools_hash": "0bcbb34f802c79263c9b60cf418b278b1c9137bb7e5cb297f6ff126df57f846c",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "system_prompt": "C:\\Users\\LG\\Desktop\\vinai\\day044\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\LG\\Desktop\\vinai\\day044\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T16:16:59",
+  "updated_at": "2026-07-29T16:17:35",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T16:17:14",
+      "user": "tìm paper về xử lý ảnh",
+      "status": "answered",
+      "assistant_text": "Here are some recent papers on image processing:\n\n1. **[Rain Removal from Light Field Images with 4D Convolution and Multi-scale Gaussian Process](http://arxiv.org/abs/2208.07735v2)**\n   - **Authors**: Tao Yan, Mingyue Li, Bin Li, Yang Yang, Rynson W. H. Lau\n   - **Published**: August 16, 2022\n   - **Summary**: This paper proposes a novel method for rain streak removal from light field images using 4D convolutional layers and a multi-scale Gaussian process. The method aims to effectively utilize the abundant information in light field images for accurate rain removal.\n   - **[PDF Link](https://arxiv.org/pdf/2208.07735v2)**\n\n2. **[Underdetermined Blind Source Separation via Weighted Simplex Shrinkage Regularization and Quantum Deep Image Prior](http://arxiv.org/abs/2603.25384v1)**\n   - **Authors**: Chia-Hsiang Lin, Si-Sheng Young\n   - **Published**: March 26, 2026\n   - **Summary**: This article addresses multispectral unmixing by transforming it into an overdetermined problem using a quantum deep image prior. The proposed algorithm effectively separates sources and provides spatial abundance distribution maps.\n   - **[PDF Link](https://arxiv.org/pdf/2603.25384v1)**\n\n3. **[Single-Pixel Compressive Imaging in Shift-Invariant Spaces via Exact Wavelet Frames](http://arxiv.org/abs/2106.00404v2)**\n   - **Authors**: Tin Vlašić, Damir Seršić\n   - **Published**: June 1, 2021\n   - **Summary**: This paper introduces a framework for single-pixel imaging using compressive sensing in shift-invariant spaces, achieving significant improvements in reconstruction quality compared to conventional methods.\n   - **[PDF Link](https://arxiv.org/pdf/2106.00404v2)**\n\n4. **[Neuromorphic Imaging with Joint Image Deblurring and Event Denoising](http://arxiv.org/abs/2309.16106v2)**\n   - **Authors**: Pei Zhang, Haosen Liu, Zhou Ge, Chutian Wang, Edmund Y. Lam\n   - **Published**: September 28, 2023\n   - **Summary**: This work presents an algorithm that combines neuromorphic imaging data with traditional images to jointly reconstruct blur-free images and reduce noise, enhancing the quality of both data types.\n   - **[PDF Link](https://arxiv.org/pdf/2309.16106v2)**\n\n5. **[BINet: a binary inpainting network for deep patch-based image compression](http://arxiv.org/abs/1912.05189v2)**\n   - **Authors**: André Nortje, Willie Brink, Herman A. Engelbrecht, Herman Kamper\n   - **Published**: December 11, 2019\n   - **Summary**: This paper introduces BINet, an autoencoder framework that improves patch-based image compression by incorporating binary inpainting to restore interdependencies between adjacent patches.\n   - **[PDF Link](https://arxiv.org/pdf/1912.05189v2)**\n\nIf you need more information or specific details from any of these papers, feel free to ask!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "image processing",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "image processing",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "image processing",
+                "api_query": "all:image AND all:processing",
+                "total_results": 78801,
+                "items": [
+                  {
+                    "arxiv_id": "2208.07735v2",
+                    "title": "Rain Removal from Light Field Images with 4D Convolution and Multi-scale Gaussian Process",
+                    "summary": "Existing deraining methods focus mainly on a single input image. However, with just a single input image, it is extremely difficult to accurately detect and remove rain streaks, in order to restore a rain-free image. In contrast, a light field image (LFI) embeds abundant 3D structure and texture information of the target scene by recording the direction and position of each incident ray via a plenoptic camera. LFIs are becoming popular in the computer vision and graphics communities. However, making full use of the abundant information available from LFIs, such as 2D array of sub-views and the disparity map of each sub-view, for effective rain removal is still a challenging problem. In this paper, we propose a novel method, 4D-MGP-SRRNet, for rain streak removal from LFIs. Our method takes as input all sub-views of a rainy LFI. To make full use of the LFI, it adopts 4D convolutional layers to simultaneously process all sub-views of the LFI. In the pipeline, the rain detection network, MGPDNet, with a novel Multi-scale Self-guided Gaussian Process (MSGP) module is proposed to detect high-resolution rain streaks from all sub-views of the input LFI at multi-scales. Semi-supervised learning is introduced for MSGP to accurately detect rain streaks by training on both virtual-world rainy LFIs and real-world rainy LFIs at multi-scales via computing pseudo ground truths for real-world rain streaks. We then feed all sub-views subtracting the predicted rain streaks into a 4D convolution-based Depth Estimation Residual Network (DERNet) to estimate the depth maps, which are later converted into fog maps. Finally, all sub-views concatenated with the corresponding rain streaks and fog maps are fed into a powerful rainy LFI restoring model based on the adversarial recurrent neural network to progressively eliminate rain streaks and recover the rain-free LFI.",
+                    "authors": [
+                      "Tao Yan",
+                      "Mingyue Li",
+                      "Bin Li",
+                      "Yang Yang",
+                      "Rynson W. H. Lau"
+                    ],
+                    "published": "2022-08-16T13:09:53Z",
+                    "updated": "2023-01-27T11:54:38Z",
+                    "url": "http://arxiv.org/abs/2208.07735v2",
+                    "pdf_url": "https://arxiv.org/pdf/2208.07735v2",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CV",
+                    "categories": [
+                      "cs.CV",
+                      "eess.IV"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2603.25384v1",
+                    "title": "Underdetermined Blind Source Separation via Weighted Simplex Shrinkage Regularization and Quantum Deep Image Prior",
+                    "summary": "As most optical satellites remotely acquire multispectral images (MSIs) with limited spatial resolution, multispectral unmixing (MU) becomes a critical signal processing technology for analyzing the pure material spectra for high-precision classification and identification. Unlike the widely investigated hyperspectral unmixing (HU) problem, MU is much more challenging as it corresponds to the underdetermined blind source separation (BSS) problem, where the number of sources is larger than the number of available multispectral bands. In this article, we transform MU into its overdetermined counterpart (i.e., HU) by inventing a radically new quantum deep image prior (QDIP), which relies on the virtual band-splitting task conducted on the observed MSI for generating the virtual hyperspectral image (HSI). Then, we perform HU on the virtual HSI to obtain the virtual hyperspectral sources. Though HU is overdetermined, it still suffers from the ill-posed issue, for which we employ the convex geometry structure of the HSI pixels to customize a weighted simplex shrinkage (WSS) regularizer to mitigate the ill-posedness. Finally, the virtual hyperspectral sources are spectrally downsampled to obtain the desired multispectral sources. The proposed geometry/quantum-empowered MU (GQ-$μ$) algorithm can also effectively obtain the spatial abundance distribution map for each source, where the geometric WSS regularization is adaptively and automatically controlled based on the sparsity pattern of the abundance tensor. Simulation and real-world data experiments demonstrate the practicality of our unsupervised GQ-$μ$ algorithm for the challenging MU task. Ablation study demonstrates the strength of QDIP, not achieved by classical DIP, and validates the mechanics-inspired WSS geometry regularizer.",
+                    "authors": [
+                      "Chia-Hsiang Lin",
+                      "Si-Sheng Young"
+                    ],
+                    "published": "2026-03-26T12:34:35Z",
+                    "updated": "2026-03-26T12:34:35Z",
+                    "url": "http://arxiv.org/abs/2603.25384v1",
+                    "pdf_url": "https://arxiv.org/pdf/2603.25384v1",
+                    "source": "arxiv.org",
+                    "primary_category": "eess.IV",
+                    "categories": [
+                      "eess.IV"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2106.00404v2",
+                    "title": "Single-Pixel Compressive Imaging in Shift-Invariant Spaces via Exact Wavelet Frames",
+                    "summary": "This paper introduces a novel framework for single-pixel imaging via compressive sensing (CS) in shift-invariant (SI) spaces by exploiting the sparsity property of a wavelet representation. We reinterpret the acquisition procedure of a single-pixel camera as filtering of the observed signal with continuous-domain functions that lie in an SI subspace spanned by the integer shifts of the box function. The signal is modeled by an arbitrary SI generator whose special case is the box function, which, as we show in the paper, is conventionally used in single-pixel imaging. We propose to use separable B-spline generators which are intuitively complemented by sparsity-inducing spline wavelets. The SI models of the acquisition and the underlying signal lead to an exact discretization of an inherently continuous-domain inverse problem to a finite-dimensional problem of CS type. By solving the CS optimization problem, a parametric representation of the signal is obtained. Such a representation offers many practical advantages in image processing applications. We propose an efficient matrix-free implementation of the framework and conduct it on the standard test images and real-world measurement data. Experimental results show that the proposed framework achieves a significant improvement of the reconstruction quality relative to the conventional discretization in CS setups. MATLAB implementation of the method described in this paper has been made publicly available on https://github.com/retiro/compressive_imaging_in_si_spaces.",
+                    "authors": [
+                      "Tin Vlašić",
+                      "Damir Seršić"
+                    ],
+                    "published": "2021-06-01T11:30:50Z",
+                    "updated": "2022-03-31T09:46:49Z",
+                    "url": "http://arxiv.org/abs/2106.00404v2",
+                    "pdf_url": "https://arxiv.org/pdf/2106.00404v2",
+                    "source": "arxiv.org",
+                    "primary_category": "eess.IV",
+                    "categories": [
+                      "eess.IV",
+                      "eess.SP"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2309.16106v2",
+                    "title": "Neuromorphic Imaging with Joint Image Deblurring and Event Denoising",
+                    "summary": "Neuromorphic imaging reacts to per-pixel brightness changes of a dynamic scene with high temporal precision and responds with asynchronous streaming events as a result. It also often supports a simultaneous output of an intensity image. Nevertheless, the raw events typically involve a large amount of noise due to the high sensitivity of the sensor, while capturing fast-moving objects at low frame rates results in blurry images. These deficiencies significantly degrade human observation and machine processing. Fortunately, the two information sources are inherently complementary -- events with microsecond-level temporal resolution, which are triggered by the edges of objects recorded in a latent sharp image, can supply rich motion details missing from the blurry one. In this work, we bring the two types of data together and introduce a simple yet effective unifying algorithm to jointly reconstruct blur-free images and noise-robust events in an iterative coarse-to-fine fashion. Specifically, an event-regularized prior offers precise high-frequency structures and dynamic features for blind deblurring, while image gradients serve as a kind of faithful supervision in regulating neuromorphic noise removal. Comprehensively evaluated on real and synthetic samples, such a synergy delivers superior reconstruction quality for both images with severe motion blur and raw event streams with a storm of noise, and also exhibits greater robustness to challenging realistic scenarios such as varying levels of illumination, contrast and motion magnitude. Meanwhile, it can be driven by much fewer events and holds a competitive edge at computational time overhead, rendering itself preferable as available computing resources are limited. Our solution gives impetus to the improvement of both sensing data and paves the way for highly accurate neuromorphic reasoning and analysis.",
+                    "authors": [
+                      "Pei Zhang",
+                      "Haosen Liu",
+                      "Zhou Ge",
+                      "Chutian Wang",
+                      "Edmund Y. Lam"
+                    ],
+                    "published": "2023-09-28T02:17:07Z",
+                    "updated": "2024-03-21T03:22:39Z",
+                    "url": "http://arxiv.org/abs/2309.16106v2",
+                    "pdf_url": "https://arxiv.org/pdf/2309.16106v2",
+                    "source": "arxiv.org",
+                    "primary_category": "eess.IV",
+                    "categories": [
+                      "eess.IV"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1912.05189v2",
+                    "title": "BINet: a binary inpainting network for deep patch-based image compression",
+                    "summary": "Recent deep learning models outperform standard lossy image compression codecs. However, applying these models on a patch-by-patch basis requires that each image patch be encoded and decoded independently. The influence from adjacent patches is therefore lost, leading to block artefacts at low bitrates. We propose the Binary Inpainting Network (BINet), an autoencoder framework which incorporates binary inpainting to reinstate interdependencies between adjacent patches, for improved patch-based compression of still images. When decoding a patch, BINet additionally uses the binarised encodings from surrounding patches to guide its reconstruction. In contrast to sequential inpainting methods where patches are decoded based on previons reconstructions, BINet operates directly on the binary codes of surrounding patches without access to the original or reconstructed image data. Encoding and decoding can therefore be performed in parallel. We demonstrate that BINet improves the compression quality of a competitive deep image codec across a range of compression levels.",
+                    "authors": [
+                      "André Nortje",
+                      "Willie Brink",
+                      "Herman A. Engelbrecht",
+                      "Herman Kamper"
+                    ],
+                    "published": "2019-12-11T09:11:01Z",
+                    "updated": "2021-01-13T16:33:53Z",
+                    "url": "http://arxiv.org/abs/1912.05189v2",
+                    "pdf_url": "https://arxiv.org/pdf/1912.05189v2",
+                    "source": "arxiv.org",
+                    "primary_category": "eess.IV",
+                    "categories": [
+                      "eess.IV",
+                      "cs.CV"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some recent papers on image processing:\n\n1. **[Rain Removal from Light Field Images with 4D Convolution and Multi-scale Gaussian Process](http://arxiv.org/abs/2208.07735v2)**\n   - **Authors**: Tao Yan, Mingyue Li, Bin Li, Yang Yang, Rynson W. H. Lau\n   - **Published**: August 16, 2022\n   - **Summary**: This paper proposes a novel method for rain streak removal from light field images using 4D convolutional layers and a multi-scale Gaussian process. The method aims to effectively utilize the abundant information in light field images for accurate rain removal.\n   - **[PDF Link](https://arxiv.org/pdf/2208.07735v2)**\n\n2. **[Underdetermined Blind Source Separation via Weighted Simplex Shrinkage Regularization and Quantum Deep Image Prior](http://arxiv.org/abs/2603.25384v1)**\n   - **Authors**: Chia-Hsiang Lin, Si-Sheng Young\n   - **Published**: March 26, 2026\n   - **Summary**: This article addresses multispectral unmixing by transforming it into an overdetermined problem using a quantum deep image prior. The proposed algorithm effectively separates sources and provides spatial abundance distribution maps.\n   - **[PDF Link](https://arxiv.org/pdf/2603.25384v1)**\n\n3. **[Single-Pixel Compressive Imaging in Shift-Invariant Spaces via Exact Wavelet Frames](http://arxiv.org/abs/2106.00404v2)**\n   - **Authors**: Tin Vlašić, Damir Seršić\n   - **Published**: June 1, 2021\n   - **Summary**: This paper introduces a framework for single-pixel imaging using compressive sensing in shift-invariant spaces, achieving significant improvements in reconstruction quality compared to conventional methods.\n   - **[PDF Link](https://arxiv.org/pdf/2106.00404v2)**\n\n4. **[Neuromorphic Imaging with Joint Image Deblurring and Event Denoising](http://arxiv.org/abs/2309.16106v2)**\n   - **Authors**: Pei Zhang, Haosen Liu, Zhou Ge, Chutian Wang, Edmund Y. Lam\n   - **Published**: September 28, 2023\n   - **Summary**: This work presents an algorithm that combines neuromorphic imaging data with traditional images to jointly reconstruct blur-free images and reduce noise, enhancing the quality of both data types.\n   - **[PDF Link](https://arxiv.org/pdf/2309.16106v2)**\n\n5. **[BINet: a binary inpainting network for deep patch-based image compression](http://arxiv.org/abs/1912.05189v2)**\n   - **Authors**: André Nortje, Willie Brink, Herman A. Engelbrecht, Herman Kamper\n   - **Published**: December 11, 2019\n   - **Summary**: This paper introduces BINet, an autoencoder framework that improves patch-based image compression by incorporating binary inpainting to restore interdependencies between adjacent patches.\n   - **[PDF Link](https://arxiv.org/pdf/1912.05189v2)**\n\nIf you need more information or specific details from any of these papers, feel free to ask!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "image processing",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "image processing",
+            "api_query": "all:image AND all:processing",
+            "total_results": 78801,
+            "items": [
+              {
+                "arxiv_id": "2208.07735v2",
+                "title": "Rain Removal from Light Field Images with 4D Convolution and Multi-scale Gaussian Process",
+                "summary": "Existing deraining methods focus mainly on a single input image. However, with just a single input image, it is extremely difficult to accurately detect and remove rain streaks, in order to restore a rain-free image. In contrast, a light field image (LFI) embeds abundant 3D structure and texture information of the target scene by recording the direction and position of each incident ray via a plenoptic camera. LFIs are becoming popular in the computer vision and graphics communities. However, making full use of the abundant information available from LFIs, such as 2D array of sub-views and the disparity map of each sub-view, for effective rain removal is still a challenging problem. In this paper, we propose a novel method, 4D-MGP-SRRNet, for rain streak removal from LFIs. Our method takes as input all sub-views of a rainy LFI. To make full use of the LFI, it adopts 4D convolutional layers to simultaneously process all sub-views of the LFI. In the pipeline, the rain detection network, MGPDNet, with a novel Multi-scale Self-guided Gaussian Process (MSGP) module is proposed to detect high-resolution rain streaks from all sub-views of the input LFI at multi-scales. Semi-supervised learning is introduced for MSGP to accurately detect rain streaks by training on both virtual-world rainy LFIs and real-world rainy LFIs at multi-scales via computing pseudo ground truths for real-world rain streaks. We then feed all sub-views subtracting the predicted rain streaks into a 4D convolution-based Depth Estimation Residual Network (DERNet) to estimate the depth maps, which are later converted into fog maps. Finally, all sub-views concatenated with the corresponding rain streaks and fog maps are fed into a powerful rainy LFI restoring model based on the adversarial recurrent neural network to progressively eliminate rain streaks and recover the rain-free LFI.",
+                "authors": [
+                  "Tao Yan",
+                  "Mingyue Li",
+                  "Bin Li",
+                  "Yang Yang",
+                  "Rynson W. H. Lau"
+                ],
+                "published": "2022-08-16T13:09:53Z",
+                "updated": "2023-01-27T11:54:38Z",
+                "url": "http://arxiv.org/abs/2208.07735v2",
+                "pdf_url": "https://arxiv.org/pdf/2208.07735v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.CV",
+                "categories": [
+                  "cs.CV",
+                  "eess.IV"
+                ]
+              },
+              {
+                "arxiv_id": "2603.25384v1",
+                "title": "Underdetermined Blind Source Separation via Weighted Simplex Shrinkage Regularization and Quantum Deep Image Prior",
+                "summary": "As most optical satellites remotely acquire multispectral images (MSIs) with limited spatial resolution, multispectral unmixing (MU) becomes a critical signal processing technology for analyzing the pure material spectra for high-precision classification and identification. Unlike the widely investigated hyperspectral unmixing (HU) problem, MU is much more challenging as it corresponds to the underdetermined blind source separation (BSS) problem, where the number of sources is larger than the number of available multispectral bands. In this article, we transform MU into its overdetermined counterpart (i.e., HU) by inventing a radically new quantum deep image prior (QDIP), which relies on the virtual band-splitting task conducted on the observed MSI for generating the virtual hyperspectral image (HSI). Then, we perform HU on the virtual HSI to obtain the virtual hyperspectral sources. Though HU is overdetermined, it still suffers from the ill-posed issue, for which we employ the convex geometry structure of the HSI pixels to customize a weighted simplex shrinkage (WSS) regularizer to mitigate the ill-posedness. Finally, the virtual hyperspectral sources are spectrally downsampled to obtain the desired multispectral sources. The proposed geometry/quantum-empowered MU (GQ-$μ$) algorithm can also effectively obtain the spatial abundance distribution map for each source, where the geometric WSS regularization is adaptively and automatically controlled based on the sparsity pattern of the abundance tensor. Simulation and real-world data experiments demonstrate the practicality of our unsupervised GQ-$μ$ algorithm for the challenging MU task. Ablation study demonstrates the strength of QDIP, not achieved by classical DIP, and validates the mechanics-inspired WSS geometry regularizer.",
+                "authors": [
+                  "Chia-Hsiang Lin",
+                  "Si-Sheng Young"
+                ],
+                "published": "2026-03-26T12:34:35Z",
+                "updated": "2026-03-26T12:34:35Z",
+                "url": "http://arxiv.org/abs/2603.25384v1",
+                "pdf_url": "https://arxiv.org/pdf/2603.25384v1",
+                "source": "arxiv.org",
+                "primary_category": "eess.IV",
+                "categories": [
+                  "eess.IV"
+                ]
+              },
+              {
+                "arxiv_id": "2106.00404v2",
+                "title": "Single-Pixel Compressive Imaging in Shift-Invariant Spaces via Exact Wavelet Frames",
+                "summary": "This paper introduces a novel framework for single-pixel imaging via compressive sensing (CS) in shift-invariant (SI) spaces by exploiting the sparsity property of a wavelet representation. We reinterpret the acquisition procedure of a single-pixel camera as filtering of the observed signal with continuous-domain functions that lie in an SI subspace spanned by the integer shifts of the box function. The signal is modeled by an arbitrary SI generator whose special case is the box function, which, as we show in the paper, is conventionally used in single-pixel imaging. We propose to use separable B-spline generators which are intuitively complemented by sparsity-inducing spline wavelets. The SI models of the acquisition and the underlying signal lead to an exact discretization of an inherently continuous-domain inverse problem to a finite-dimensional problem of CS type. By solving the CS optimization problem, a parametric representation of the signal is obtained. Such a representation offers many practical advantages in image processing applications. We propose an efficient matrix-free implementation of the framework and conduct it on the standard test images and real-world measurement data. Experimental results show that the proposed framework achieves a significant improvement of the reconstruction quality relative to the conventional discretization in CS setups. MATLAB implementation of the method described in this paper has been made publicly available on https://github.com/retiro/compressive_imaging_in_si_spaces.",
+                "authors": [
+                  "Tin Vlašić",
+                  "Damir Seršić"
+                ],
+                "published": "2021-06-01T11:30:50Z",
+                "updated": "2022-03-31T09:46:49Z",
+                "url": "http://arxiv.org/abs/2106.00404v2",
+                "pdf_url": "https://arxiv.org/pdf/2106.00404v2",
+                "source": "arxiv.org",
+                "primary_category": "eess.IV",
+                "categories": [
+                  "eess.IV",
+                  "eess.SP"
+                ]
+              },
+              {
+                "arxiv_id": "2309.16106v2",
+                "title": "Neuromorphic Imaging with Joint Image Deblurring and Event Denoising",
+                "summary": "Neuromorphic imaging reacts to per-pixel brightness changes of a dynamic scene with high temporal precision and responds with asynchronous streaming events as a result. It also often supports a simultaneous output of an intensity image. Nevertheless, the raw events typically involve a large amount of noise due to the high sensitivity of the sensor, while capturing fast-moving objects at low frame rates results in blurry images. These deficiencies significantly degrade human observation and machine processing. Fortunately, the two information sources are inherently complementary -- events with microsecond-level temporal resolution, which are triggered by the edges of objects recorded in a latent sharp image, can supply rich motion details missing from the blurry one. In this work, we bring the two types of data together and introduce a simple yet effective unifying algorithm to jointly reconstruct blur-free images and noise-robust events in an iterative coarse-to-fine fashion. Specifically, an event-regularized prior offers precise high-frequency structures and dynamic features for blind deblurring, while image gradients serve as a kind of faithful supervision in regulating neuromorphic noise removal. Comprehensively evaluated on real and synthetic samples, such a synergy delivers superior reconstruction quality for both images with severe motion blur and raw event streams with a storm of noise, and also exhibits greater robustness to challenging realistic scenarios such as varying levels of illumination, contrast and motion magnitude. Meanwhile, it can be driven by much fewer events and holds a competitive edge at computational time overhead, rendering itself preferable as available computing resources are limited. Our solution gives impetus to the improvement of both sensing data and paves the way for highly accurate neuromorphic reasoning and analysis.",
+                "authors": [
+                  "Pei Zhang",
+                  "Haosen Liu",
+                  "Zhou Ge",
+                  "Chutian Wang",
+                  "Edmund Y. Lam"
+                ],
+                "published": "2023-09-28T02:17:07Z",
+                "updated": "2024-03-21T03:22:39Z",
+                "url": "http://arxiv.org/abs/2309.16106v2",
+                "pdf_url": "https://arxiv.org/pdf/2309.16106v2",
+                "source": "arxiv.org",
+                "primary_category": "eess.IV",
+                "categories": [
+                  "eess.IV"
+                ]
+              },
+              {
+                "arxiv_id": "1912.05189v2",
+                "title": "BINet: a binary inpainting network for deep patch-based image compression",
+                "summary": "Recent deep learning models outperform standard lossy image compression codecs. However, applying these models on a patch-by-patch basis requires that each image patch be encoded and decoded independently. The influence from adjacent patches is therefore lost, leading to block artefacts at low bitrates. We propose the Binary Inpainting Network (BINet), an autoencoder framework which incorporates binary inpainting to reinstate interdependencies between adjacent patches, for improved patch-based compression of still images. When decoding a patch, BINet additionally uses the binarised encodings from surrounding patches to guide its reconstruction. In contrast to sequential inpainting methods where patches are decoded based on previons reconstructions, BINet operates directly on the binary codes of surrounding patches without access to the original or reconstructed image data. Encoding and decoding can therefore be performed in parallel. We demonstrate that BINet improves the compression quality of a competitive deep image codec across a range of compression levels.",
+                "authors": [
+                  "André Nortje",
+                  "Willie Brink",
+                  "Herman A. Engelbrecht",
+                  "Herman Kamper"
+                ],
+                "published": "2019-12-11T09:11:01Z",
+                "updated": "2021-01-13T16:33:53Z",
+                "url": "http://arxiv.org/abs/1912.05189v2",
+                "pdf_url": "https://arxiv.org/pdf/1912.05189v2",
+                "source": "arxiv.org",
+                "primary_category": "eess.IV",
+                "categories": [
+                  "eess.IV",
+                  "cs.CV"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T16:17:35"
+    }
+  ]
+}

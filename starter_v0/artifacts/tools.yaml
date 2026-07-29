@@ -116,3 +116,60 @@ tools:
         max_pages: {type: integer, default: 5, description: "Số trang"}
         max_chars: {type: integer, default: 8000, description: "Số ký tự"}
       required: [arxiv_url]
+
+  - name: paper_reader
+    description: "Đọc toàn bộ PDF của một paper arXiv, chia nội dung theo trang và section, đồng thời lưu bản text/JSON đầy đủ. Dùng khi cần phân tích cả bài thay vì chỉ vài trang đầu."
+    parameters:
+      type: object
+      properties:
+        arxiv_url:
+          type: string
+          default: ""
+          description: "arXiv ID hoặc URL cụ thể; không tự suy đoán."
+        max_chars_per_section:
+          type: integer
+          default: 12000
+          minimum: 1000
+          maximum: 30000
+          description: "Số ký tự tối đa trả về cho mỗi section; bản đầy đủ vẫn được lưu local."
+      required: [arxiv_url]
+
+  - name: paper_sections
+    description: "Đọc paper arXiv và trích bằng chứng riêng cho Method, Experiments, Results và Limitations dựa trên heading của bài. Dùng khi cần tóm tắt phương pháp/kết quả có cấu trúc."
+    parameters:
+      type: object
+      properties:
+        arxiv_url:
+          type: string
+          default: ""
+          description: "arXiv ID hoặc URL cụ thể; không tự suy đoán."
+        max_chars_per_category:
+          type: integer
+          default: 16000
+          minimum: 1000
+          maximum: 40000
+          description: "Ngân sách text tối đa trả về cho mỗi nhóm nội dung."
+      required: [arxiv_url]
+
+  - name: explain_terms
+    description: "Giải thích các thuật ngữ cụ thể được nhắc trong một paper arXiv bằng ngữ cảnh trong bài và định nghĩa Wikipedia có dẫn nguồn. Không dùng nếu người dùng chưa chỉ rõ paper hoặc thuật ngữ."
+    parameters:
+      type: object
+      properties:
+        arxiv_url:
+          type: string
+          default: ""
+          description: "arXiv ID hoặc URL của paper chứa thuật ngữ."
+        terms:
+          type: array
+          minItems: 1
+          maxItems: 20
+          items: {type: string}
+          description: "Danh sách thuật ngữ cần giải thích."
+        max_contexts:
+          type: integer
+          default: 3
+          minimum: 1
+          maximum: 5
+          description: "Số đoạn ngữ cảnh tối đa lấy từ paper cho mỗi thuật ngữ."
+      required: [arxiv_url, terms]
