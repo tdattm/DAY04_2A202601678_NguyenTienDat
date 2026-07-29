@@ -38,9 +38,7 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 **Link dùng thử (truy cập được trong showdown):**
 
-> Dán public URL nếu người khác cần mở từ máy riêng; localhost cũng được nếu demo trực tiếp trên máy trình chiếu. Streamlit được khuyến nghị, nhưng nhóm có thể dùng bất kỳ framework nào.
->
-> URL:
+> URL: http://localhost:8501 (chạy `streamlit run app.py` trong `starter_v0/`)
 
 ## A2. Tool agent có
 
@@ -77,9 +75,11 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 > Chuẩn bị 3–5 scenario. Mỗi scenario cần cho thấy tool đã làm gì và một thay đổi cụ thể giữa các version.
 
-| Scenario | Tool trace cần thấy | Câu chuyện cải thiện version | Fallback run/transcript |
-| -------- | --------------------- | -------------------------------- | ----------------------- |
-|          |                       |                                  |                         |
+| Scenario              | Tool trace cần thấy | Câu chuyện cải thiện version    | Fallback run/transcript                    |
+| --------------------- | --------------------- | ----------------------------------- | ------------------------------------------ |
+| Tìm paper về LoRA   | v8                    | papers(topic="LoRA")                | transcripts/demo_search.transcript.json    |
+| Đọc toàn bộ paper | v8                    | paper_reader(paper_id="2310.11511") | transcripts/demo_reader.transcript.json    |
+| Trích xuất Method   | v8                    | paper_sections(section="Method")    | transcripts/demo_sections.transcript.jsons |
 
 ---
 
@@ -91,20 +91,29 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 Fill from `artifacts/version_log.csv` and `runs/*.json`.
 
-| Version | Prompt/tool change | Hypothesis | Metric name | Before | After | Run File |
-| ------- | ------------------ | ---------- | ----------- | -----: | ----: | -------- |
-| v0      | baseline           |            |             |        |       |          |
-| v1      |                    |            |             |        |       |          |
-| v2      |                    |            |             |        |       |          |
-| v3      |                    |            |             |        |       |          |
+| Version | Prompt/tool change                                | Hypothesis                                                                                                                        | Metric name   | Before | After | Run File                                         |
+| ------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------- | -----: | ----: | ------------------------------------------------ |
+| v0      | baseline                                          | Measure initial tool routing and argument behavior before optimization                                                            | case_accuracy |        |  0.65 | runs/v0_B_base_openai_20260729T145454761340.json |
+| v1      | artifacts/system_prompt.md                        | Explicit scope clarification argument conventions and multi-tool routing will reduce the observed v0 mismatches                   | case_accuracy |   0.65 |  0.95 | runs/v1_B_base_openai_20260729T150524889742.json |
+| v2      | artifacts/system_prompt.md                        | An initial external send request must trigger yes-no confirmation before a free-text clarification                                | case_accuracy |   0.95 |   1.0 | runs/v2_B_base_openai_20260729T150648551324.json |
+| v3      | artifacts/system_prompt.md, artifacts/tools.yaml | General paper-tool boundaries and restored safety rules will preserve base routing while enabling the new capabilities            | case_accuracy |    1.0 |   0.9 | runs/v3_B_base_openai_20260729T163646947975.json |
+| v4      | artifacts/system_prompt.md                        | Explicit clarification priority will recover R10 and R12 without changing other routes                                            | case_accuracy |    0.9 |  0.95 | runs/v4_B_base_openai_20260729T164718441470.json |
+| v5      | artifacts/system_prompt.md                        | A top-level yes-no-only rule for initial external actions will recover R12 without regressing other routes                        | case_accuracy |   0.95 |   1.0 | runs/v5_B_base_openai_20260729T164822272536.json |
+| v6      | artifacts/system_prompt.md                        | A no-repeat rule will stop equivalent paper tool calls without regressing the fixed base suite                                    | case_accuracy |    1.0 |   1.0 | runs/v6_B_base_openai_20260729T165127596562.json |
+| v7      | artifacts/system_prompt.md                        | A pre-call deduplication rule will remove identical parallel calls while preserving fixed base accuracy                           | case_accuracy |    1.0 |   1.0 | runs/v7_B_base_openai_20260729T165351319485.json |
+| v8      | artifacts/tools.yaml                              | An explicit single-call tool contract will prevent one duplicate call per requested paper category while preserving base accuracy | case_accuracy |    1.0 |   1.0 | runs/v8_B_base_openai_20260729T165541759790.json |
 
 ## B2. Failure analysis
 
 Use actual failures from `results[*].result.failures`.
 
-| Case ID | Failure Type | Actual Tool Calls | What Failed | Fix |
-| ------- | ------------ | ----------------- | ----------- | --- |
-|         |              |                   |             |     |
+| Case ID | Failure Type            | Actual Tool Calls            | What Failed                                                                            | Fix                                                                                  |
+| ------- | ----------------------- | ---------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| R10     | Missing clarification   | papers                       | Agent thực hiện tìm paper ngay khi người dùng chưa cung cấp đủ thông tin.   | Thêm quy tắc ưu tiên`clarify` trong `system_prompt.md`                       |
+| R12     | Missing confirmation    | send                         | Agent thực hiện hành động gửi nội dung mà chưa xác nhận với người dùng. | Bổ sung quy tắc xác nhận Yes/No trước khi gọi`send`.                        |
+| R17     | Duplicate tool call     | papers → papers             | Cùng một truy vấn nhưng tool bị gọi hai lần liên tiếp.                        | Thêm quy tắc chống duplicate trong`system_prompt.md`.                           |
+| R19     | Duplicate paper reader  | paper_reader → paper_reader | Paper được đọc lại mặc dù đã có kết quả trước đó.                     | Thêm pre-call deduplication trước khi thực thi tool.                             |
+| R21     | Incorrect tool boundary | paper_reader                 | Agent đọc toàn bộ paper trong khi chỉ cần đọc Abstract.                        | Điều chỉnh routing giữa`paper_text` và `paper_reader` trong `tools.yaml`. |
 
 ## B3. Team eval cases
 
@@ -118,26 +127,32 @@ not belong here.
 
 File template để trống có chủ đích; nhóm phải tự thiết kế đủ 10 case.
 
-| Case ID   | What It Tests                                         | Expected Tool/Behavior               | Result |
-| --------- | ----------------------------------------------------- | ------------------------------------ | ------ |
-| single_01 | Tìm kiếm cơ bản với từ khóa                    | `papers`                           |        |
-| single_02 | Bắt lỗi thiếu thông tin Paper ID                  | `clarify`                          |        |
-| single_03 | Trích xuất chi tiết bằng tool mới paper_sections | `paper_sections`                   |        |
-| single_04 | Giải thích chuyên sâu thuật ngữ trong paper     | `explain_terms`                    |        |
-| single_05 | Phân biệt paper_text (đọc lướt) vs paper_reader | `paper_text`                       |        |
-| multi_01  | Luồng papers -> paper_reader                         | `paper_reader`                     |        |
-| multi_02  | Luồng papers -> paper_sections                       | `paper_sections`                   |        |
-| multi_03  | Luồng paper_sections -> explain_terms                | `explain_terms`                    |        |
-| multi_04  | Luồng paper_reader -> format                         | `format`                           |        |
-| multi_05  | Test sự tập trung khi hỏi ngoài lề               | `no_tool` (báo lỗi out_of_scope) |        |
+| Case ID   | What It Tests                                         | Expected Tool/Behavior               | Result        |
+| --------- | ----------------------------------------------------- | ------------------------------------ | ------------- |
+| single_01 | Tìm kiếm cơ bản với từ khóa                    | `papers`                           | PASS (`v8`) |
+| single_02 | Bắt lỗi thiếu thông tin Paper ID                  | `clarify`                          | PASS (`v8`) |
+| single_03 | Trích xuất chi tiết bằng tool mới paper_sections | `paper_sections`                   | PASS (`v8`) |
+| single_04 | Giải thích chuyên sâu thuật ngữ trong paper     | `explain_terms`                    | PASS (`v8`) |
+| single_05 | Phân biệt paper_text (đọc lướt) vs paper_reader | `paper_text`                       | PASS (`v8`) |
+| multi_01  | Luồng papers -> paper_reader                         | `paper_reader`                     | PASS (`v8`) |
+| multi_02  | Luồng papers -> paper_sections                       | `paper_sections`                   | PASS (`v8`) |
+| multi_03  | Luồng paper_sections -> explain_terms                | `explain_terms`                    | PASS (`v8`) |
+| multi_04  | Luồng paper_reader -> format                         | `format`                           | PASS (`v8`) |
+| multi_05  | Test sự tập trung khi hỏi ngoài lề               | `no_tool` (báo lỗi out_of_scope) | PASS (`v8`) |
+
+Group evidence: `runs/v8_B_group_openai_20260729T165708460171.json`
 
 ## B4. Live chat evidence
 
 Use `transcripts/*.transcript.json`.
 
-| Scenario/Turn | Version | Tool Calls + Args | Transcript/Run | Outcome |
-| ------------- | ------- | ----------------- | -------------- | ------- |
-|               |         |                   |                |         |
+| Scenario/Turn                                          | Version | Tool Calls + Args                               | Transcript/Run                              | Outcome                                                                                                                                                   |
+| ------------------------------------------------------ | ------- | ----------------------------------------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| User yêu cầu:**"tìm paper về xử lý ảnh"** | v2      | papers(query="image processing", max_results=5) | transcripts/v2_openai_20260729T161659732320 | Agent nhận diện đúng intent và gọi duy nhất một lần tool**papers** để tìm kiếm trên arXiv.                                            |
+| Truy vấn arXiv                                        | v2      | api_query = all:image AND all:processing        | transcripts/v2_openai_20260729T161659732320 | Tool kết nối thành công với arXiv và tìm được**78.801** bài báo phù hợp với truy vấn.                                               |
+| Trả kết quả tìm kiếm                              | v2      | papers → 5 results                             | transcripts/v2_openai_20260729T161659732320 | Trả về**5 bài báo** liên quan đến xử lý ảnh, mỗi bài gồm tiêu đề, tác giả, ngày xuất bản, tóm tắt, liên kết arXiv và PDF. |
+| Tổng hợp phản hồi                                  | v2      | Không gọi thêm tool                          | transcripts/v2_openai_20260729T161659732320 | Agent tổng hợp kết quả thành danh sách dễ đọc và trình bày đầy đủ thông tin cho người dùng.                                           |
+| Kết quả cuối cùng                                  | v2      | no_tool                                         | transcripts/v2_openai_20260729T161659732320 | Không phát sinh lỗi, không gọi lặp tool, routing chính xác và hoàn thành yêu cầu tìm kiếm paper thành công.                              |
 
 ## B5. Tool capability evidence
 
@@ -155,6 +170,58 @@ UI is core deliverable, not bonus. Do not list it here.
 ## B6. Reflection
 
 - Which fixes belonged in `system_prompt.md`?
+
+1. Làm rõ phạm vi của Research Agent chỉ xử lý các tác vụ liên quan đến paper nghiên cứu.
+2. Bổ sung quy tắc ưu tiên `clarify` khi thiếu Paper ID hoặc thông tin truy vấn.
+3. Thêm hướng dẫn lựa chọn đúng tool (`paper_text`, `paper_reader`, `paper_sections`) theo mục đích của người dùng.
+4. Bổ sung quy tắc tránh gọi lặp cùng một tool cho cùng một yêu cầu.
+5. Quy định phải xác nhận người dùng trước các hành động có ảnh hưởng bên ngoài (ví dụ `send`).
+
 - Which fixes belonged in `tools.yaml`?
+
+1. Khai báo ba custom tool: paper_reader, paper_sections, explain_terms.
+2. Cập nhật mô tả (description) và input schema để agent hiểu rõ khi nào nên gọi từng tool.
+3. Điều chỉnh routing nhằm phân biệt giữa đọc nhanh (`paper_text`) và đọc toàn bộ (`paper_reader`).
+4. Thêm ràng buộc chỉ gọi mỗi tool một lần cho cùng một intent.
+
 - Which failure needed manual review instead of automatic grading?
+
+1. Chất lượng phần tóm tắt paper.
+2. Độ chính xác của phần giải thích thuật ngữ.
+3. Nội dung được trích xuất từ `paper_sections`.
+4. Các câu trả lời yêu cầu suy luận hoặc tổng hợp từ nhiều section.
+
 - What would you improve next?
+
+1. Hỗ trợ thêm nguồn paper ngoài arXiv
+2. Bổ sung citation theo từng đoạn văn được trích xuất.
+3. Cải thiện khả năng nhận diện section trên nhiều định dạng PFD khác nhau.
+4. tối ưu cache để tránh đọc lại cùng một PDF nhiều lần.
+
+* Hỗ trợ thêm nguồn paper ngoài arXiv (Semantic Scholar, ACL Anthology, PubMed).
+* Bổ sung citation theo từng đoạn văn được trích xuất.
+* Cải thiện khả năng nhận diện section trên nhiều định dạng PDF khác nhau.
+* Thêm chức năng so sánh nhiều paper theo Method, Dataset và Result.
+* Tối ưu cache để tránh đọc lại cùng một PDF nhiều lần.
+* Mở rộng bộ eval với nhiều tình huống multi-turn và edge case nhằm kiểm thử độ ổn định của agent.
+
+* Hỗ trợ thêm nguồn paper ngoài arXiv (Semantic Scholar, ACL Anthology, PubMed).
+* Bổ sung citation theo từng đoạn văn được trích xuất.
+* Cải thiện khả năng nhận diện section trên nhiều định dạng PDF khác nhau.
+* Thêm chức năng so sánh nhiều paper theo Method, Dataset và Result.
+* Tối ưu cache để tránh đọc lại cùng một PDF nhiều lần.
+* Mở rộng bộ eval với nhiều tình huống multi-turn và edge case nhằm kiểm thử độ ổn định của agent.
+
+* Hỗ trợ thêm nguồn paper ngoài arXiv (Semantic Scholar, ACL Anthology, PubMed).
+* Bổ sung citation theo từng đoạn văn được trích xuất.
+* Cải thiện khả năng nhận diện section trên nhiều định dạng PDF khác nhau.
+* Thêm chức năng so sánh nhiều paper theo Method, Dataset và Result.
+* Tối ưu cache để tránh đọc lại cùng một PDF nhiều lần.
+* Mở rộng bộ eval với nhiều tình huống multi-turn và edge case nhằm kiểm thử độ ổn định của agent.
+
+* Hỗ trợ thêm nguồn paper ngoài arXiv (Semantic Scholar, ACL Anthology, PubMed).
+* Bổ sung citation theo từng đoạn văn được trích xuất.
+* Cải thiện khả năng nhận diện section trên nhiều định dạng PDF khác nhau.
+* Thêm chức năng so sánh nhiều paper theo Method, Dataset và Result.
+* Tối ưu cache để tránh đọc lại cùng một PDF nhiều lần.
+* Mở rộng bộ eval với nhiều tình huống multi-turn và edge case nhằm kiểm thử độ ổn định của agent.

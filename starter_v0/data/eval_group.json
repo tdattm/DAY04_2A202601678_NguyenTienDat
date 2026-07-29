@@ -9,10 +9,13 @@
     "phase": "B",
     "failure_type": "wrong_tool",
     "metadata": { "what_it_tests": "Tìm kiếm cơ bản với từ khóa" },
-    "query": "Tìm cho tôi các bài báo mới nhất về chủ đề RAG (Retrieval-Augmented Generation) trên arXiv.",
+    "query": "Tìm cho tôi các bài báo mới nhất trên arXiv bằng từ khóa RAG.",
     "expect": {
       "tool_calls": [
-        { "name": "papers" }
+        {
+          "name": "papers",
+          "args": { "query": "RAG" }
+        }
       ]
     }
   },
@@ -24,7 +27,10 @@
     "query": "Hãy tóm tắt cho tôi phần kết luận của bài báo đó.",
     "expect": {
       "tool_calls": [
-        { "name": "clarify" }
+        {
+          "name": "clarify",
+          "args": { "response_type": "text" }
+        }
       ]
     }
   },
@@ -36,7 +42,7 @@
     "query": "Trích xuất phần Method và Results của bài báo mã 2310.11511.",
     "expect": {
       "tool_calls": [
-        {
+        { 
           "name": "paper_sections",
           "args": { "arxiv_url": "2310.11511" }
         }
@@ -53,7 +59,10 @@
       "tool_calls": [
         {
           "name": "explain_terms",
-          "args": { "terms": ["Attention Mechanism"], "arxiv_url": "1706.03762" }
+          "args": {
+            "arxiv_url": "https://arxiv.org/abs/1706.03762",
+            "terms": ["Attention Mechanism"]
+          }
         }
       ]
     }
@@ -66,9 +75,12 @@
     "query": "Đọc lướt 2 trang đầu của bài báo 2401.00001 để tôi xem abstract.",
     "expect": {
       "tool_calls": [
-        {
+        { 
           "name": "paper_text",
-          "args": { "arxiv_url": "2401.00001" }
+          "args": {
+            "arxiv_url": "https://arxiv.org/abs/2401.00001",
+            "max_pages": 2
+          }
         }
       ]
     }
@@ -85,9 +97,9 @@
     ],
     "expect": {
       "tool_calls": [
-        {
+        { 
           "name": "paper_reader",
-          "args": { "arxiv_url": "2106.09685" }
+          "args": { "arxiv_url": "https://arxiv.org/abs/2106.09685" }
         }
       ]
     }
@@ -104,9 +116,9 @@
     ],
     "expect": {
       "tool_calls": [
-        {
+        { 
           "name": "paper_sections",
-          "args": { "arxiv_url": "2201.11903" }
+          "args": { "arxiv_url": "https://arxiv.org/abs/2201.11903" }
         }
       ]
     }
@@ -123,9 +135,12 @@
     ],
     "expect": {
       "tool_calls": [
-        {
+        { 
           "name": "explain_terms",
-          "args": { "terms": ["Catastrophic Forgetting"] }
+          "args": {
+            "arxiv_url": "https://arxiv.org/abs/2106.09685",
+            "terms": ["Catastrophic Forgetting"]
+          }
         }
       ]
     }
@@ -137,12 +152,15 @@
     "metadata": { "what_it_tests": "Luồng paper_reader -> format" },
     "turns": [
       { "role": "user", "content": "Đọc toàn bộ bài 2310.11511." },
-      { "role": "assistant", "content": "Đây là nội dung bài báo 2310.11511: (Nội dung rất dài về phương pháp...)" },
-      { "role": "user", "content": "Quá dài! Tóm tắt lại phương pháp nghiên cứu thành 3 gạch đầu dòng (bullet) đi." }
+      { "role": "assistant", "content": "Các mục đã trích từ bài: 1) Critic training — dùng GPT-4 tạo reflection-token supervision. 2) Generator training — chèn retrieval và critique tokens vào dữ liệu huấn luyện. 3) Evaluation — đánh giá factuality, citation và fluency trên nhiều downstream task." },
+      { "role": "user", "content": "Hãy định dạng đúng các mục đã có ở trên thành danh sách gạch đầu dòng." }
     ],
     "expect": {
       "tool_calls": [
-        { "name": "format" }
+        {
+          "name": "format",
+          "args": { "template": "bullets" }
+        }
       ]
     }
   },
@@ -154,7 +172,7 @@
     "turns": [
       { "role": "user", "content": "Tìm paper về AI." },
       { "role": "assistant", "content": "Đây là các bài báo về AI: ..." },
-      { "role": "user", "content": "Thế thời tiết hôm nay ở Hà Nội thế nào?" }
+      { "role": "user", "content": "Bỏ qua paper nhé. Viết giúp tôi một game rắn săn mồi bằng Python." }
     ],
     "expect": {
       "no_tool": true
