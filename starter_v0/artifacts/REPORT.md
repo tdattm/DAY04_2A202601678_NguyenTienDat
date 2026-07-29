@@ -8,8 +8,23 @@
 ## Team
 
 - Team: A3
-- Members: 
-- Provider/model:
+- Members:
+  - Lê Hồ Quang Huy — 2A202602026 — Tool Engineering Lead
+  - Lã Phan Hoài An — 2A202601846 — Eval & QA Lead
+  - Nguyễn Tiến Đạt — 2A202601678 — Prompt & Evaluation Lead
+  - Kiều Phúc Huy — 2A202601056 — UI & Deployment Lead
+  - Nguyễn Nam Phong — 2A202601320 — Report & Demo Lead
+- Provider/model: OpenAI / `gpt-4o-mini`
+
+### Role assignment
+
+| Thành viên        | MSSV        | Role                     | Nhiệm vụ chính                                                                                                                                                                                                           | Deliverable phụ trách                                                                             |
+| ------------------- | ----------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Lê Hồ Quang Huy   | 2A202602026 | Tool Engineering Lead    | Thiết kế và triển khai ít nhất một tool mới; viết`TOOL.md`; đăng ký tool trong `tools/__init__.py` và `artifacts/tools.yaml`; smoke-test implementation và kiểm tra lỗi thực thi của các tool/API. | `tools/<new_tool>/`, tool registry, tool declaration và bằng chứng smoke test                  |
+| Lã Phan Hoài An   | 2A202601846 | Eval & QA Lead           | Thiết kế đúng 10 team eval case gồm 5 single-turn và 5 multi-turn; kiểm tra schema/expected behavior; chạy regression và review thủ công các mismatch hoặc tool result có lỗi.                               | `data/eval_group.json`, kết quả group eval và QA evidence                                      |
+| Nguyễn Tiến Đạt | 2A202601678 | Prompt & Evaluation Lead | Phân tích failed trace; tối ưu`system_prompt.md`/tool routing theo từng giả thuyết; chạy và so sánh `v0`–`v3`; quản lý metric, artifact hash và version history.                                        | `artifacts/system_prompt.md`, `artifacts/version_log.csv`, `runs/*.json` và failure analysis |
+| Kiều Phúc Huy     | 2A202601056 | UI & Deployment Lead     | Xây dựng UI tái sử dụng agent loop trong`chat.py`; hiển thị request/response, tool trace, args, result/error và artifact version; lưu transcript; triển khai URL để nhóm khác kiểm thử.                   | `app.py`, UI dependencies, `transcripts/*.transcript.json` và public demo URL                  |
+| Nguyễn Nam Phong   | 2A202601320 | Report & Demo Lead       | Tổng hợp evidence thật vào Report A/B; chuẩn bị 3–5 scenario demo, câu hỏi mẫu, fallback run/transcript; điều phối rehearsal, showdown và final submission checklist.                                         | `artifacts/REPORT.md`, demo script, rehearsal evidence và final gate                             |
 
 ---
 
@@ -29,11 +44,21 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 ## A2. Tool agent có
 
-| Tên tool | Làm được gì                              | Tool mới nhóm thêm? |
-| --------- | --------------------------------------------- | ---------------------- |
-| clarify   | hỏi lại người dùng khi thiếu thông tin | không                 |
-|           |                                               |                        |
-|           |                                               |                        |
+| Tên tool      | Làm được gì                                                                     | Tool mới nhóm thêm? |
+| -------------- | ------------------------------------------------------------------------------------ | ---------------------- |
+| clarify        | Hỏi lại người dùng khi thiếu thông tin hoặc cần xác nhận trước khi gửi | không                 |
+| timeline       | Lấy tweet gần đây của một tài khoản cụ thể theo tên (Sam Altman→sama)    | không                 |
+| fetch          | Đọc nội dung từ URL cụ thể                                                     | không                 |
+| format         | Định dạng kết quả thành bản tin markdown                                      | không                 |
+| lookup         | Tìm tin tức/thông tin trên web với timeframe và topic                          | không                 |
+| paper_text     | Đọc nhanh một số trang đầu của paper                                          | không                 |
+| papers         | Tìm paper trên arXiv theo chủ đề                                                | không                 |
+| policy         | Tra quy định nội bộ về nghiên cứu, trích dẫn và quyền riêng tư          | không                 |
+| send           | Gửi text lên Telegram (có confirmation guard)                                     | không                 |
+| social_search  | Tìm tweet theo chủ đề, hỗ trợ Latest/Top                                       | không                 |
+| paper_reader   | Đọc toàn bộ PDF, chia nội dung theo trang và section                           | Có                    |
+| paper_sections | Trích riêng Method, Experiments, Results và Limitations cùng bằng chứng        | Có                    |
+| explain_terms  | Giải thích thuật ngữ dựa trên ngữ cảnh trong paper và nguồn tham khảo     | Có                    |
 
 ## A3. Câu hỏi mẫu để thử
 
