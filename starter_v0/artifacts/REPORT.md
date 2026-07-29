@@ -145,11 +145,12 @@ Phân loại rõ tool mới bắt buộc, optional built-in và tool đủ đi�
 
 UI is core deliverable, not bonus. Do not list it here.
 
-| Category                         | Evidence File | What Worked | Risk / Guardrail |
-| -------------------------------- | ------------- | ----------- | ---------------- |
-| Must-have: tool mới đầu tiên |               |             |                  |
-| Optional built-in                |               |             |                  |
-| Bonus: tool mới thứ 4 trở đi |               |             |                  |
+| Category                              | Evidence File                | What Worked                                                                                                                                             | Risk / Guardrail                                                                                                                                                                |
+| ------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Must-have: tool mới (paper_reader)   | tools/paper_reader.py        | Đọc và trích xuất nội dung từ PDF nghiên cứu, chuyển đổi thành văn bản để LLM xử lý.                                                 | Chất lượng phụ thuộc vào PDF (scan/image có thể OCR kém); cần giới hạn kích thước file và xử lý lỗi khi PDF không hợp lệ.                                 |
+| Must-have: tool mới (explain_terms)  | tools/explain_terms.py       | Một số bài báo có cấu trúc không chuẩn nên việc nhận diện section có thể sai; cần fallback sang tìm kiếm theo tiêu đề gần đúng. | Có thể giải thích chưa chính xác với thuật ngữ chuyên ngành hiếm; nên yêu cầu LLM trả lời dựa trên nội dung bài báo và nêu rõ khi không chắc chắn. |
+| Must-have: tool mới (paper_sections) | tools/paper_sections.py      | Tự động xác định các phần như Abstract, Introduction, Methodology, Results, Conclusion để hỗ trợ truy vấn theo từng mục.                | Một số bài báo có cấu trúc không chuẩn nên việc nhận diện section có thể sai; cần fallback sang tìm kiếm theo tiêu đề gần đúng.                         |
+| Optional built-in (policy, papers)    | tools/policy/, tools/papers/ | Truy cập chính sách hoặc cơ sở dữ liệu bài báo thông qua built-in tool khi có API key hợp lệ.                                             | Cần cấu hình API key tương ứng để chạy thực tế; nếu thiếu key cần xử lý lỗi và thông báo rõ cho người dùng.                                             |
 
 ## B6. Reflection
 
