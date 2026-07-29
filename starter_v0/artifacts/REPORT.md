@@ -6,9 +6,24 @@
 
 ## Team
 
-- Team:
+- Team: A3
 - Members:
-- Provider/model:
+  - Lê Hồ Quang Huy — 2A202602026 — Tool Engineering Lead
+  - Lã Phan Hoài An — 2A202601846 — Eval & QA Lead
+  - Nguyễn Tiến Đạt — 2A202601678 — Prompt & Evaluation Lead
+  - Kiều Phúc Huy — 2A202601056 — UI & Deployment Lead
+  - Nguyễn Nam Phong — 2A202601320 — Report & Demo Lead
+- Provider/model: OpenAI / `gpt-4o-mini`
+
+### Role assignment
+
+| Thành viên | MSSV | Role | Nhiệm vụ chính | Deliverable phụ trách |
+|---|---|---|---|---|
+| Lê Hồ Quang Huy | 2A202602026 | Tool Engineering Lead | Thiết kế và triển khai ít nhất một tool mới; viết `TOOL.md`; đăng ký tool trong `tools/__init__.py` và `artifacts/tools.yaml`; smoke-test implementation và kiểm tra lỗi thực thi của các tool/API. | `tools/<new_tool>/`, tool registry, tool declaration và bằng chứng smoke test |
+| Lã Phan Hoài An | 2A202601846 | Eval & QA Lead | Thiết kế đúng 10 team eval case gồm 5 single-turn và 5 multi-turn; kiểm tra schema/expected behavior; chạy regression và review thủ công các mismatch hoặc tool result có lỗi. | `data/eval_group.json`, kết quả group eval và QA evidence |
+| Nguyễn Tiến Đạt | 2A202601678 | Prompt & Evaluation Lead | Phân tích failed trace; tối ưu `system_prompt.md`/tool routing theo từng giả thuyết; chạy và so sánh `v0`–`v3`; quản lý metric, artifact hash và version history. | `artifacts/system_prompt.md`, `artifacts/version_log.csv`, `runs/*.json` và failure analysis |
+| Kiều Phúc Huy | 2A202601056 | UI & Deployment Lead | Xây dựng UI tái sử dụng agent loop trong `chat.py`; hiển thị request/response, tool trace, args, result/error và artifact version; lưu transcript; triển khai URL để nhóm khác kiểm thử. | `app.py`, UI dependencies, `transcripts/*.transcript.json` và public demo URL |
+| Nguyễn Nam Phong | 2A202601320 | Report & Demo Lead | Tổng hợp evidence thật vào Report A/B; chuẩn bị 3–5 scenario demo, câu hỏi mẫu, fallback run/transcript; điều phối rehearsal, showdown và final submission checklist. | `artifacts/REPORT.md`, demo script, rehearsal evidence và final gate |
 
 ---
 
