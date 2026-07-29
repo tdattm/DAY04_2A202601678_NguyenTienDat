@@ -12,7 +12,7 @@
     "query": "Tìm cho tôi các bài báo mới nhất về chủ đề RAG (Retrieval-Augmented Generation) trên arXiv.",
     "expect": {
       "tool_calls": [
-        { "function": "papers" }
+        { "name": "papers" }
       ]
     }
   },
@@ -24,7 +24,7 @@
     "query": "Hãy tóm tắt cho tôi phần kết luận của bài báo đó.",
     "expect": {
       "tool_calls": [
-        { "function": "clarify" }
+        { "name": "clarify" }
       ]
     }
   },
@@ -36,9 +36,9 @@
     "query": "Trích xuất phần Method và Results của bài báo mã 2310.11511.",
     "expect": {
       "tool_calls": [
-        { 
-          "function": "paper_sections",
-          "args": { "paper_id": "2310.11511" }
+        {
+          "name": "paper_sections",
+          "args": { "arxiv_url": "2310.11511" }
         }
       ]
     }
@@ -52,8 +52,8 @@
     "expect": {
       "tool_calls": [
         {
-          "function": "explain_terms",
-          "args": { "term": "Attention Mechanism", "paper_id": "1706.03762" }
+          "name": "explain_terms",
+          "args": { "terms": ["Attention Mechanism"], "arxiv_url": "1706.03762" }
         }
       ]
     }
@@ -66,9 +66,9 @@
     "query": "Đọc lướt 2 trang đầu của bài báo 2401.00001 để tôi xem abstract.",
     "expect": {
       "tool_calls": [
-        { 
-          "function": "paper_text",
-          "args": { "paper_id": "2401.00001" }
+        {
+          "name": "paper_text",
+          "args": { "arxiv_url": "2401.00001" }
         }
       ]
     }
@@ -85,9 +85,9 @@
     ],
     "expect": {
       "tool_calls": [
-        { 
-          "function": "paper_reader",
-          "args": { "paper_id": "2106.09685" } 
+        {
+          "name": "paper_reader",
+          "args": { "arxiv_url": "2106.09685" }
         }
       ]
     }
@@ -104,9 +104,9 @@
     ],
     "expect": {
       "tool_calls": [
-        { 
-          "function": "paper_sections",
-          "args": { "paper_id": "2201.11903" }
+        {
+          "name": "paper_sections",
+          "args": { "arxiv_url": "2201.11903" }
         }
       ]
     }
@@ -123,9 +123,9 @@
     ],
     "expect": {
       "tool_calls": [
-        { 
-          "function": "explain_terms",
-          "args": { "term": "Catastrophic Forgetting" } 
+        {
+          "name": "explain_terms",
+          "args": { "terms": ["Catastrophic Forgetting"] }
         }
       ]
     }
@@ -142,7 +142,7 @@
     ],
     "expect": {
       "tool_calls": [
-        { "function": "format" }
+        { "name": "format" }
       ]
     }
   },
