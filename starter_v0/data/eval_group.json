@@ -3,5 +3,162 @@
   "dataset_role": "group",
   "description": "Template để NHÓM tự viết đúng 10 case: 5 single-turn dùng query và 5 multi-turn dùng turns. Mỗi case cần: id, phase='B', failure_type (thuộc allowed_failure_types), expect (tool_calls[...] hoặc no_tool=true), và metadata.what_it_tests. File để trống có chủ đích vì mỗi nhóm phải tự thiết kế các case này.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "cases": [
+  {
+    "id": "single_01",
+    "phase": "B",
+    "failure_type": "wrong_tool",
+    "metadata": { "what_it_tests": "Tìm kiếm cơ bản với từ khóa" },
+    "query": "Tìm cho tôi các bài báo mới nhất về chủ đề RAG (Retrieval-Augmented Generation) trên arXiv.",
+    "expect": {
+      "tool_calls": [
+        { "function": "papers" }
+      ]
+    }
+  },
+  {
+    "id": "single_02",
+    "phase": "B",
+    "failure_type": "missing_info",
+    "metadata": { "what_it_tests": "Bắt lỗi thiếu thông tin Paper ID" },
+    "query": "Hãy tóm tắt cho tôi phần kết luận của bài báo đó.",
+    "expect": {
+      "tool_calls": [
+        { "function": "clarify" }
+      ]
+    }
+  },
+  {
+    "id": "single_03",
+    "phase": "B",
+    "failure_type": "wrong_tool",
+    "metadata": { "what_it_tests": "Trích xuất chi tiết bằng tool mới paper_sections" },
+    "query": "Trích xuất phần Method và Results của bài báo mã 2310.11511.",
+    "expect": {
+      "tool_calls": [
+        { 
+          "function": "paper_sections",
+          "args": { "paper_id": "2310.11511" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "single_04",
+    "phase": "B",
+    "failure_type": "wrong_tool",
+    "metadata": { "what_it_tests": "Giải thích chuyên sâu thuật ngữ trong paper" },
+    "query": "Trong bài báo mã 1706.03762, tác giả định nghĩa thế nào về khái niệm 'Attention Mechanism'?",
+    "expect": {
+      "tool_calls": [
+        {
+          "function": "explain_terms",
+          "args": { "term": "Attention Mechanism", "paper_id": "1706.03762" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "single_05",
+    "phase": "B",
+    "failure_type": "wrong_tool",
+    "metadata": { "what_it_tests": "Phân biệt paper_text (đọc lướt) vs paper_reader" },
+    "query": "Đọc lướt 2 trang đầu của bài báo 2401.00001 để tôi xem abstract.",
+    "expect": {
+      "tool_calls": [
+        { 
+          "function": "paper_text",
+          "args": { "paper_id": "2401.00001" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "multi_01",
+    "phase": "B",
+    "failure_type": "wrong_tool",
+    "metadata": { "what_it_tests": "Luồng papers -> paper_reader" },
+    "turns": [
+      { "role": "user", "content": "Tìm bài báo về LoRA." },
+      { "role": "assistant", "content": "Tôi tìm thấy 3 bài báo về LoRA: 1. [2106.09685] LoRA: Low-Rank Adaptation. 2. [2305.14314] QLoRA..." },
+      { "role": "user", "content": "Đọc toàn bộ nội dung của bài báo đầu tiên giúp tôi nhé." }
+    ],
+    "expect": {
+      "tool_calls": [
+        { 
+          "function": "paper_reader",
+          "args": { "paper_id": "2106.09685" } 
+        }
+      ]
+    }
+  },
+  {
+    "id": "multi_02",
+    "phase": "B",
+    "failure_type": "wrong_tool",
+    "metadata": { "what_it_tests": "Luồng papers -> paper_sections" },
+    "turns": [
+      { "role": "user", "content": "Tìm các bài báo nghiên cứu về Prompt Engineering." },
+      { "role": "assistant", "content": "Tôi tìm thấy các bài: 1. [2302.11382] Prompt Engineering... 2. [2201.11903] Chain-of-Thought Prompting..." },
+      { "role": "user", "content": "Hãy lấy phần Experiments của bài báo thứ hai để tôi xem họ test như thế nào." }
+    ],
+    "expect": {
+      "tool_calls": [
+        { 
+          "function": "paper_sections",
+          "args": { "paper_id": "2201.11903" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "multi_03",
+    "phase": "B",
+    "failure_type": "wrong_tool",
+    "metadata": { "what_it_tests": "Luồng paper_sections -> explain_terms" },
+    "turns": [
+      { "role": "user", "content": "Trích xuất phần Limitations của bài 2106.09685" },
+      { "role": "assistant", "content": "Phần Limitations của bài báo 2106.09685 có nhắc đến vấn đề độ phức tạp tính toán và Catastrophic Forgetting." },
+      { "role": "user", "content": "Họ có nhắc đến 'Catastrophic Forgetting', giải thích kỹ cụm này dựa trên bài báo đó đi." }
+    ],
+    "expect": {
+      "tool_calls": [
+        { 
+          "function": "explain_terms",
+          "args": { "term": "Catastrophic Forgetting" } 
+        }
+      ]
+    }
+  },
+  {
+    "id": "multi_04",
+    "phase": "B",
+    "failure_type": "wrong_tool",
+    "metadata": { "what_it_tests": "Luồng paper_reader -> format" },
+    "turns": [
+      { "role": "user", "content": "Đọc toàn bộ bài 2310.11511." },
+      { "role": "assistant", "content": "Đây là nội dung bài báo 2310.11511: (Nội dung rất dài về phương pháp...)" },
+      { "role": "user", "content": "Quá dài! Tóm tắt lại phương pháp nghiên cứu thành 3 gạch đầu dòng (bullet) đi." }
+    ],
+    "expect": {
+      "tool_calls": [
+        { "function": "format" }
+      ]
+    }
+  },
+  {
+    "id": "multi_05",
+    "phase": "B",
+    "failure_type": "out_of_scope",
+    "metadata": { "what_it_tests": "Test sự tập trung khi hỏi ngoài lề" },
+    "turns": [
+      { "role": "user", "content": "Tìm paper về AI." },
+      { "role": "assistant", "content": "Đây là các bài báo về AI: ..." },
+      { "role": "user", "content": "Thế thời tiết hôm nay ở Hà Nội thế nào?" }
+    ],
+    "expect": {
+      "no_tool": true
+    }
+  }
+]
 }

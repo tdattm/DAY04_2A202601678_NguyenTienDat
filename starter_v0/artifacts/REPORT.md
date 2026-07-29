@@ -106,7 +106,16 @@ File template để trống có chủ đích; nhóm phải tự thiết kế đ�
 
 | Case ID | What It Tests | Expected Tool/Behavior | Result |
 |---|---|---|---|
-|  |  |  |  |
+| single_01 | Tìm kiếm cơ bản với từ khóa | `papers` |  |
+| single_02 | Bắt lỗi thiếu thông tin Paper ID | `clarify` |  |
+| single_03 | Trích xuất chi tiết bằng tool mới paper_sections | `paper_sections` |  |
+| single_04 | Giải thích chuyên sâu thuật ngữ trong paper | `explain_terms` |  |
+| single_05 | Phân biệt paper_text (đọc lướt) vs paper_reader | `paper_text` |  |
+| multi_01 | Luồng papers -> paper_reader | `paper_reader` |  |
+| multi_02 | Luồng papers -> paper_sections | `paper_sections` |  |
+| multi_03 | Luồng paper_sections -> explain_terms | `explain_terms` |  |
+| multi_04 | Luồng paper_reader -> format | `format` |  |
+| multi_05 | Test sự tập trung khi hỏi ngoài lề | `no_tool` (báo lỗi out_of_scope) |  |
 
 ## B4. Live chat evidence
 
