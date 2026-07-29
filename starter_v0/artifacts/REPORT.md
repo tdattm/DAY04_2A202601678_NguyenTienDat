@@ -62,7 +62,16 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 ## A3. Câu hỏi mẫu để thử
 
-> 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
+> 1. Tìm cho tôi các bài báo mới nhất về chủ đề RAG (Retrieval-Augmented Generation) trên arXiv.
+> 2. Hãy tóm tắt cho tôi phần kết luận của bài báo đó.
+> 3. Trích xuất phần Method và Results của bài báo mã 2310.11511.
+> 4. Trong bài báo mã 1706.03762, tác giả định nghĩa thế nào về khái niệm 'Attention Mechanism'
+> 5. Đọc lướt 2 trang đầu của bài báo 2401.00001 để tôi xem abstract.
+> 6. Tìm bài báo về LoRA.
+> 7. Tìm các bài báo nghiên cứu về Prompt Engineering.
+> 8. Trích xuất phần Limitations của bài 2106.09685
+> 9. Đọc toàn bộ bài 2310.11511.
+> 10. Tìm paper về AI.
 
 ## A4. Kịch bản demo đã rehearse
 
