@@ -1,0 +1,361 @@
+{
+  "transcript_id": "v0_openai_20260729T172057733588",
+  "version": "v0",
+  "artifact_version": "v0+p39ce1a8dbc38+t3d88a34ec2b3",
+  "prompt_hash": "39ce1a8dbc38b278bd369a3a2ff5dbe8a15deaad1b651490ed0b0d060ed38496",
+  "tools_hash": "3d88a34ec2b3db42e38ece5f48ea736a75ce605cefb102dac6f92f0761d5ef8a",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "system_prompt": "D:\\ThS\\VinAI\\DAY04_2A202601678_NguyenTienDat\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\ThS\\VinAI\\DAY04_2A202601678_NguyenTienDat\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T17:20:57",
+  "updated_at": "2026-07-29T17:25:26",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T17:20:57",
+      "user": "Bạn có thể giúp gì?",
+      "status": "answered",
+      "assistant_text": "Tôi có thể giúp bạn với nhiều loại yêu cầu khác nhau, bao gồm:\n\n1. **Tìm kiếm thông tin**: Tôi có thể tìm kiếm thông tin trên internet hoặc trong các bài báo khoa học.\n2. **Tóm tắt nội dung**: Tôi có thể tóm tắt các bài báo hoặc tài liệu dài.\n3. **Giải thích thuật ngữ**: Tôi có thể giải thích các thuật ngữ chuyên ngành từ các bài báo khoa học.\n4. **Theo dõi mạng xã hội**: Tôi có thể lấy các bài đăng gần đây từ các tài khoản mạng xã hội.\n5. **Hỗ trợ về chính sách**: Tôi có thể cung cấp thông tin về các chính sách nội bộ.\n\nNếu bạn có yêu cầu cụ thể nào, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Tôi có thể giúp bạn với nhiều loại yêu cầu khác nhau, bao gồm:\n\n1. **Tìm kiếm thông tin**: Tôi có thể tìm kiếm thông tin trên internet hoặc trong các bài báo khoa học.\n2. **Tóm tắt nội dung**: Tôi có thể tóm tắt các bài báo hoặc tài liệu dài.\n3. **Giải thích thuật ngữ**: Tôi có thể giải thích các thuật ngữ chuyên ngành từ các bài báo khoa học.\n4. **Theo dõi mạng xã hội**: Tôi có thể lấy các bài đăng gần đây từ các tài khoản mạng xã hội.\n5. **Hỗ trợ về chính sách**: Tôi có thể cung cấp thông tin về các chính sách nội bộ.\n\nNếu bạn có yêu cầu cụ thể nào, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "artifact_version": "v0+p39ce1a8dbc38+t3d88a34ec2b3",
+      "ended_at": "2026-07-29T17:21:04"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T17:25:13",
+      "user": "Tôi cần các bài báo liên quan tới API Key của llm, hãy giải thích thuật ngữ API key và cho tôi ví dụ về API key mẫu đang được dùng trong model của bạn được không?",
+      "status": "answered",
+      "assistant_text": "### Các bài báo liên quan đến API Key trong LLM\n\nDưới đây là một số bài báo liên quan đến API Key trong ngữ cảnh của các mô hình ngôn ngữ lớn (LLM):\n\n1. **[Generating API Parameter Security Rules with LLM for API Misuse Detection](http://arxiv.org/abs/2409.09288v2)**\n   - **Tác giả**: Jinghua Liu, Yi Yang, Kai Chen, Miaoqian Lin\n   - **Tóm tắt**: Bài báo này trình bày một khung mới, tên là GPTAid, để tự động tạo ra các quy tắc bảo mật API bằng cách phân tích mã nguồn API với LLM và phát hiện việc sử dụng sai API do sử dụng tham số không đúng.\n\n2. **[Mind your key: An Empirical Study of LLM API Credential Leakage in iOS Apps](http://arxiv.org/abs/2606.12212v3)**\n   - **Tác giả**: Pinran Gao, Lingxiang Wang, Yi Liu, Kunpeng Liu, Fan Yang, Ying Zhang\n   - **Tóm tắt**: Nghiên cứu này điều tra việc rò rỉ khóa API LLM trong các ứng dụng iOS, phát hiện rằng nhiều ứng dụng tiết lộ thông tin xác thực API LLM trong lưu lượng mạng.\n\n3. **[MioHint: LLM-assisted Mutation for Whitebox API Testing](http://arxiv.org/abs/2504.05738v4)**\n   - **Tác giả**: Jia Li, Jiacheng Shen, Yuxin Su, Michael R. Lyu\n   - **Tóm tắt**: Bài báo này đề xuất một phương pháp kiểm thử API mới sử dụng khả năng hiểu mã của LLM để cải thiện độ tin cậy của các ứng dụng đám mây.\n\n4. **[LLM+Reasoning+Planning for Supporting Incomplete User Queries in Presence of APIs](http://arxiv.org/abs/2405.12433v3)**\n   - **Tác giả**: Sudhir Agarwal, Anu Sreepathy, David H. Alonso, Prarit Lamba\n   - **Tóm tắt**: Bài báo này trình bày một phương pháp sử dụng LLM và lập kế hoạch AI để xử lý các truy vấn người dùng không đầy đủ liên quan đến các API.\n\n5. **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](http://arxiv.org/abs/2304.08244v2)**\n   - **Tác giả**: Minghao Li, Yingxiu Zhao, Bowen Yu, Feifan Song, Hangyu Li, Haiyang Yu, Zhoujun Li, Fei Huang, Yongbin Li\n   - **Tóm tắt**: Bài báo này giới thiệu một bộ chuẩn mới cho các LLM được tăng cường công cụ, nhằm đánh giá khả năng sử dụng công cụ của các LLM hiện tại.\n\n### Giải thích thuật ngữ \"API Key\"\n\n**API Key** là một chuỗi ký tự duy nhất được sử dụng để xác thực và theo dõi việc sử dụng API. Nó thường được cấp cho các nhà phát triển khi họ đăng ký sử dụng một dịch vụ API. API Key giúp đảm bảo rằng chỉ những người dùng được ủy quyền mới có thể truy cập vào các chức năng của API và giúp nhà cung cấp dịch vụ theo dõi việc sử dụng API để ngăn chặn lạm dụng.\n\nNếu bạn cần thêm thông tin hoặc có câu hỏi khác, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "API Key LLM",
+                "max_results": 5
+              }
+            },
+            {
+              "name": "explain_terms",
+              "args": {
+                "arxiv_url": "",
+                "terms": [
+                  "API key"
+                ],
+                "max_contexts": 3
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "API Key LLM",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "API Key LLM",
+                "api_query": "all:API AND all:Key AND all:LLM",
+                "total_results": 298,
+                "items": [
+                  {
+                    "arxiv_id": "2409.09288v2",
+                    "title": "Generating API Parameter Security Rules with LLM for API Misuse Detection",
+                    "summary": "In this paper, we present a new framework, named GPTAid, for automatic APSRs generation by analyzing API source code with LLM and detecting API misuse caused by incorrect parameter use. To validate the correctness of the LLM-generated APSRs, we propose an execution feedback-checking approach based on the observation that security-critical API misuse is often caused by APSRs violations, and most of them result in runtime errors. Specifically, GPTAid first uses LLM to generate raw APSRs and the Right calling code, and then generates Violation code for each raw APSR by modifying the Right calling code using LLM. Subsequently, GPTAid performs dynamic execution on each piece of Violation code and further filters out the incorrect APSRs based on runtime errors. To further generate concrete APSRs, GPTAid employs a code differential analysis to refine the filtered ones. Particularly, as the programming language is more precise than natural language, GPTAid identifies the key operations within Violation code by differential analysis, and then generates the corresponding concrete APSR based on the aforementioned operations. These concrete APSRs could be precisely interpreted into applicable detection code, which proven to be effective in API misuse detection. Implementing on the dataset containing 200 randomly selected APIs from eight popular libraries, GPTAid achieves a precision of 92.3%. Moreover, it generates 6 times more APSRs than state-of-the-art detectors on a comparison dataset of previously reported bugs and APSRs. We further evaluated GPTAid on 47 applications, 210 unknown security bugs were found potentially resulting in severe security issues (e.g., system crashes), 150 of which have been confirmed by developers after our reports.",
+                    "authors": [
+                      "Jinghua Liu",
+                      "Yi Yang",
+                      "Kai Chen",
+                      "Miaoqian Lin"
+                    ],
+                    "published": "2024-09-14T03:34:43Z",
+                    "updated": "2024-09-19T04:15:40Z",
+                    "url": "http://arxiv.org/abs/2409.09288v2",
+                    "pdf_url": "https://arxiv.org/pdf/2409.09288v2",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CR",
+                    "categories": [
+                      "cs.CR",
+                      "cs.SE"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2606.12212v3",
+                    "title": "Mind your key: An Empirical Study of LLM API Credential Leakage in iOS Apps",
+                    "summary": "The rapid integration of large language models (LLMs) into mobile applications has introduced a new class of credential security risk: leaked credentials that grant unauthorized access to LLM inference services, causing financial damage to developers. Prior work on credential leakage has focused primarily on Android apps; to date, no empirical study has systematically investigated LLM API key leakage in iOS applications. We present the first in-depth empirical study of API key leakage in LLM-integrated apps. We construct a high-quality dataset of 444 iOS applications, filtered from 1092 candidates through a standardized process, and develop LLMKeyLens, a dynamic analysis framework that detects LLM API key leakage via traffic interception, provider-specific key extraction, and active validity confirmation, requiring neither source code access nor binary decryption. Our analysis reveals that 282 applications expose exploitable LLM API credentials in network traffic, spanning at least ten providers. We identify three leakage patterns: JWT-based token leakage (48%), unauthenticated backend proxy access (33%), and plaintext API key transmission (19%). To assess remediation, we re-analyzed the same 282 vulnerable applications three months after responsible disclosure; only 28% had remediated the reported vulnerability, while 72% remained exploitable, with persistent issues stemming from unauthenticated backends and broken JWT implementations. Our findings show that LLM API key leakage is both prevalent and persistent in the iOS ecosystem, exposing a systemic gap between developer practice and secure integration principles, and suggest that secure LLM integration requires not only developer awareness but also explicit security guidance from providers and platform-level enforcement.",
+                    "authors": [
+                      "Pinran Gao",
+                      "Lingxiang Wang",
+                      "Yi Liu",
+                      "Kunpeng Liu",
+                      "Fan Yang",
+                      "Ying Zhang"
+                    ],
+                    "published": "2026-06-10T15:29:05Z",
+                    "updated": "2026-06-23T03:53:46Z",
+                    "url": "http://arxiv.org/abs/2606.12212v3",
+                    "pdf_url": "https://arxiv.org/pdf/2606.12212v3",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.SE",
+                    "categories": [
+                      "cs.SE",
+                      "cs.CR"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2504.05738v4",
+                    "title": "MioHint: LLM-assisted Mutation for Whitebox API Testing",
+                    "summary": "Cloud applications heavily rely on APIs to communicate with each other and exchange data. To ensure the reliability of cloud applications, cloud providers widely adopt API testing techniques. Unfortunately, existing API testing approaches are insufficient to reach strict conditions, a problem known as fitness plateaus, due to the lack of gradient provided by coverage metrics. To address this issue, we propose MioHint, a novel white-box API testing approach that leverages the code comprehension capabilities of Large Language Model (LLM) to boost API testing. The key challenge of LLM-based API testing lies in system-level testing, which emphasizes the dependencies between requests and targets across functions and files, thereby making the entire codebase the object of analysis. However, feeding the entire codebase to an LLM is impractical due to its limited context length and short memory. MioHint addresses this challenge by synergizing static analysis with LLMs. We retrieve relevant code with data-dependency analysis at the statement level, including def-use analysis for variables used in the target and function expansion for subfunctions called by the target. To evaluate the effectiveness of our method, we conducted experiments across 16 real-world REST API services. The findings reveal that MioHint achieves an average increase of 4.95% absolute in line coverage compared to the baseline, EvoMaster, alongside a remarkable factor of 67x improvement in mutation accuracy. Furthermore, our method successfully covers over 57% of hard-to-cover targets while in baseline the coverage is less than 10%.",
+                    "authors": [
+                      "Jia Li",
+                      "Jiacheng Shen",
+                      "Yuxin Su",
+                      "Michael R. Lyu"
+                    ],
+                    "published": "2025-04-08T07:14:51Z",
+                    "updated": "2026-03-05T11:02:15Z",
+                    "url": "http://arxiv.org/abs/2504.05738v4",
+                    "pdf_url": "https://arxiv.org/pdf/2504.05738v4",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.SE",
+                    "categories": [
+                      "cs.SE"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2405.12433v3",
+                    "title": "LLM+Reasoning+Planning for Supporting Incomplete User Queries in Presence of APIs",
+                    "summary": "Recent availability of Large Language Models (LLMs) has led to the development of numerous LLM-based approaches aimed at providing natural language interfaces for various end-user tasks. These end-user tasks in turn can typically be accomplished by orchestrating a given set of APIs. In practice, natural language task requests (user queries) are often incomplete, i.e., they may not contain all the information required by the APIs. While LLMs excel at natural language processing (NLP) tasks, they frequently hallucinate on missing information or struggle with orchestrating the APIs. The key idea behind our proposed approach is to leverage logical reasoning and classical AI planning along with an LLM for accurately answering user queries including identification and gathering of any missing information in these queries. Our approach uses an LLM and ASP (Answer Set Programming) solver to translate a user query to a representation in Planning Domain Definition Language (PDDL) via an intermediate representation in ASP. We introduce a special API \"get_info_api\" for gathering missing information. We model all the APIs as PDDL actions in a way that supports dataflow between the APIs. Our approach then uses a classical AI planner to generate an orchestration of API calls (including calls to get_info_api) to answer the user query. Our evaluation results show that our approach significantly outperforms a pure LLM based approach by achieving over 95% success rate in most cases on a dataset containing complete and incomplete single goal and multi-goal queries where the multi-goal queries may or may not require dataflow among the APIs.",
+                    "authors": [
+                      "Sudhir Agarwal",
+                      "Anu Sreepathy",
+                      "David H. Alonso",
+                      "Prarit Lamba"
+                    ],
+                    "published": "2024-05-21T01:16:34Z",
+                    "updated": "2025-02-13T11:48:15Z",
+                    "url": "http://arxiv.org/abs/2405.12433v3",
+                    "pdf_url": "https://arxiv.org/pdf/2405.12433v3",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.AI",
+                    "categories": [
+                      "cs.AI"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2304.08244v2",
+                    "title": "API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs",
+                    "summary": "Recent research has demonstrated that Large Language Models (LLMs) can enhance their capabilities by utilizing external tools. However, three pivotal questions remain unanswered: (1) How effective are current LLMs in utilizing tools? (2) How can we enhance LLMs' ability to utilize tools? (3) What obstacles need to be overcome to leverage tools? To address these questions, we introduce API-Bank, a groundbreaking benchmark, specifically designed for tool-augmented LLMs. For the first question, we develop a runnable evaluation system consisting of 73 API tools. We annotate 314 tool-use dialogues with 753 API calls to assess the existing LLMs' capabilities in planning, retrieving, and calling APIs. For the second question, we construct a comprehensive training set containing 1,888 tool-use dialogues from 2,138 APIs spanning 1,000 distinct domains. Using this dataset, we train Lynx, a tool-augmented LLM initialized from Alpaca. Experimental results demonstrate that GPT-3.5 exhibits improved tool utilization compared to GPT-3, while GPT-4 excels in planning. However, there is still significant potential for further improvement. Moreover, Lynx surpasses Alpaca's tool utilization performance by more than 26 pts and approaches the effectiveness of GPT-3.5. Through error analysis, we highlight the key challenges for future research in this field to answer the third question.",
+                    "authors": [
+                      "Minghao Li",
+                      "Yingxiu Zhao",
+                      "Bowen Yu",
+                      "Feifan Song",
+                      "Hangyu Li",
+                      "Haiyang Yu",
+                      "Zhoujun Li",
+                      "Fei Huang",
+                      "Yongbin Li"
+                    ],
+                    "published": "2023-04-14T14:05:32Z",
+                    "updated": "2023-10-25T06:54:12Z",
+                    "url": "http://arxiv.org/abs/2304.08244v2",
+                    "pdf_url": "https://arxiv.org/pdf/2304.08244v2",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CL",
+                    "categories": [
+                      "cs.CL",
+                      "cs.AI"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            },
+            {
+              "tool": "explain_terms",
+              "args": {
+                "arxiv_url": "",
+                "terms": [
+                  "API key"
+                ],
+                "max_contexts": 3
+              },
+              "result": {
+                "tool": "read_structured_paper",
+                "error": "ValueError",
+                "message": "Invalid arXiv ID or URL"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "### Các bài báo liên quan đến API Key trong LLM\n\nDưới đây là một số bài báo liên quan đến API Key trong ngữ cảnh của các mô hình ngôn ngữ lớn (LLM):\n\n1. **[Generating API Parameter Security Rules with LLM for API Misuse Detection](http://arxiv.org/abs/2409.09288v2)**\n   - **Tác giả**: Jinghua Liu, Yi Yang, Kai Chen, Miaoqian Lin\n   - **Tóm tắt**: Bài báo này trình bày một khung mới, tên là GPTAid, để tự động tạo ra các quy tắc bảo mật API bằng cách phân tích mã nguồn API với LLM và phát hiện việc sử dụng sai API do sử dụng tham số không đúng.\n\n2. **[Mind your key: An Empirical Study of LLM API Credential Leakage in iOS Apps](http://arxiv.org/abs/2606.12212v3)**\n   - **Tác giả**: Pinran Gao, Lingxiang Wang, Yi Liu, Kunpeng Liu, Fan Yang, Ying Zhang\n   - **Tóm tắt**: Nghiên cứu này điều tra việc rò rỉ khóa API LLM trong các ứng dụng iOS, phát hiện rằng nhiều ứng dụng tiết lộ thông tin xác thực API LLM trong lưu lượng mạng.\n\n3. **[MioHint: LLM-assisted Mutation for Whitebox API Testing](http://arxiv.org/abs/2504.05738v4)**\n   - **Tác giả**: Jia Li, Jiacheng Shen, Yuxin Su, Michael R. Lyu\n   - **Tóm tắt**: Bài báo này đề xuất một phương pháp kiểm thử API mới sử dụng khả năng hiểu mã của LLM để cải thiện độ tin cậy của các ứng dụng đám mây.\n\n4. **[LLM+Reasoning+Planning for Supporting Incomplete User Queries in Presence of APIs](http://arxiv.org/abs/2405.12433v3)**\n   - **Tác giả**: Sudhir Agarwal, Anu Sreepathy, David H. Alonso, Prarit Lamba\n   - **Tóm tắt**: Bài báo này trình bày một phương pháp sử dụng LLM và lập kế hoạch AI để xử lý các truy vấn người dùng không đầy đủ liên quan đến các API.\n\n5. **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](http://arxiv.org/abs/2304.08244v2)**\n   - **Tác giả**: Minghao Li, Yingxiu Zhao, Bowen Yu, Feifan Song, Hangyu Li, Haiyang Yu, Zhoujun Li, Fei Huang, Yongbin Li\n   - **Tóm tắt**: Bài báo này giới thiệu một bộ chuẩn mới cho các LLM được tăng cường công cụ, nhằm đánh giá khả năng sử dụng công cụ của các LLM hiện tại.\n\n### Giải thích thuật ngữ \"API Key\"\n\n**API Key** là một chuỗi ký tự duy nhất được sử dụng để xác thực và theo dõi việc sử dụng API. Nó thường được cấp cho các nhà phát triển khi họ đăng ký sử dụng một dịch vụ API. API Key giúp đảm bảo rằng chỉ những người dùng được ủy quyền mới có thể truy cập vào các chức năng của API và giúp nhà cung cấp dịch vụ theo dõi việc sử dụng API để ngăn chặn lạm dụng.\n\nNếu bạn cần thêm thông tin hoặc có câu hỏi khác, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "API Key LLM",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "API Key LLM",
+            "api_query": "all:API AND all:Key AND all:LLM",
+            "total_results": 298,
+            "items": [
+              {
+                "arxiv_id": "2409.09288v2",
+                "title": "Generating API Parameter Security Rules with LLM for API Misuse Detection",
+                "summary": "In this paper, we present a new framework, named GPTAid, for automatic APSRs generation by analyzing API source code with LLM and detecting API misuse caused by incorrect parameter use. To validate the correctness of the LLM-generated APSRs, we propose an execution feedback-checking approach based on the observation that security-critical API misuse is often caused by APSRs violations, and most of them result in runtime errors. Specifically, GPTAid first uses LLM to generate raw APSRs and the Right calling code, and then generates Violation code for each raw APSR by modifying the Right calling code using LLM. Subsequently, GPTAid performs dynamic execution on each piece of Violation code and further filters out the incorrect APSRs based on runtime errors. To further generate concrete APSRs, GPTAid employs a code differential analysis to refine the filtered ones. Particularly, as the programming language is more precise than natural language, GPTAid identifies the key operations within Violation code by differential analysis, and then generates the corresponding concrete APSR based on the aforementioned operations. These concrete APSRs could be precisely interpreted into applicable detection code, which proven to be effective in API misuse detection. Implementing on the dataset containing 200 randomly selected APIs from eight popular libraries, GPTAid achieves a precision of 92.3%. Moreover, it generates 6 times more APSRs than state-of-the-art detectors on a comparison dataset of previously reported bugs and APSRs. We further evaluated GPTAid on 47 applications, 210 unknown security bugs were found potentially resulting in severe security issues (e.g., system crashes), 150 of which have been confirmed by developers after our reports.",
+                "authors": [
+                  "Jinghua Liu",
+                  "Yi Yang",
+                  "Kai Chen",
+                  "Miaoqian Lin"
+                ],
+                "published": "2024-09-14T03:34:43Z",
+                "updated": "2024-09-19T04:15:40Z",
+                "url": "http://arxiv.org/abs/2409.09288v2",
+                "pdf_url": "https://arxiv.org/pdf/2409.09288v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.CR",
+                "categories": [
+                  "cs.CR",
+                  "cs.SE"
+                ]
+              },
+              {
+                "arxiv_id": "2606.12212v3",
+                "title": "Mind your key: An Empirical Study of LLM API Credential Leakage in iOS Apps",
+                "summary": "The rapid integration of large language models (LLMs) into mobile applications has introduced a new class of credential security risk: leaked credentials that grant unauthorized access to LLM inference services, causing financial damage to developers. Prior work on credential leakage has focused primarily on Android apps; to date, no empirical study has systematically investigated LLM API key leakage in iOS applications. We present the first in-depth empirical study of API key leakage in LLM-integrated apps. We construct a high-quality dataset of 444 iOS applications, filtered from 1092 candidates through a standardized process, and develop LLMKeyLens, a dynamic analysis framework that detects LLM API key leakage via traffic interception, provider-specific key extraction, and active validity confirmation, requiring neither source code access nor binary decryption. Our analysis reveals that 282 applications expose exploitable LLM API credentials in network traffic, spanning at least ten providers. We identify three leakage patterns: JWT-based token leakage (48%), unauthenticated backend proxy access (33%), and plaintext API key transmission (19%). To assess remediation, we re-analyzed the same 282 vulnerable applications three months after responsible disclosure; only 28% had remediated the reported vulnerability, while 72% remained exploitable, with persistent issues stemming from unauthenticated backends and broken JWT implementations. Our findings show that LLM API key leakage is both prevalent and persistent in the iOS ecosystem, exposing a systemic gap between developer practice and secure integration principles, and suggest that secure LLM integration requires not only developer awareness but also explicit security guidance from providers and platform-level enforcement.",
+                "authors": [
+                  "Pinran Gao",
+                  "Lingxiang Wang",
+                  "Yi Liu",
+                  "Kunpeng Liu",
+                  "Fan Yang",
+                  "Ying Zhang"
+                ],
+                "published": "2026-06-10T15:29:05Z",
+                "updated": "2026-06-23T03:53:46Z",
+                "url": "http://arxiv.org/abs/2606.12212v3",
+                "pdf_url": "https://arxiv.org/pdf/2606.12212v3",
+                "source": "arxiv.org",
+                "primary_category": "cs.SE",
+                "categories": [
+                  "cs.SE",
+                  "cs.CR"
+                ]
+              },
+              {
+                "arxiv_id": "2504.05738v4",
+                "title": "MioHint: LLM-assisted Mutation for Whitebox API Testing",
+                "summary": "Cloud applications heavily rely on APIs to communicate with each other and exchange data. To ensure the reliability of cloud applications, cloud providers widely adopt API testing techniques. Unfortunately, existing API testing approaches are insufficient to reach strict conditions, a problem known as fitness plateaus, due to the lack of gradient provided by coverage metrics. To address this issue, we propose MioHint, a novel white-box API testing approach that leverages the code comprehension capabilities of Large Language Model (LLM) to boost API testing. The key challenge of LLM-based API testing lies in system-level testing, which emphasizes the dependencies between requests and targets across functions and files, thereby making the entire codebase the object of analysis. However, feeding the entire codebase to an LLM is impractical due to its limited context length and short memory. MioHint addresses this challenge by synergizing static analysis with LLMs. We retrieve relevant code with data-dependency analysis at the statement level, including def-use analysis for variables used in the target and function expansion for subfunctions called by the target. To evaluate the effectiveness of our method, we conducted experiments across 16 real-world REST API services. The findings reveal that MioHint achieves an average increase of 4.95% absolute in line coverage compared to the baseline, EvoMaster, alongside a remarkable factor of 67x improvement in mutation accuracy. Furthermore, our method successfully covers over 57% of hard-to-cover targets while in baseline the coverage is less than 10%.",
+                "authors": [
+                  "Jia Li",
+                  "Jiacheng Shen",
+                  "Yuxin Su",
+                  "Michael R. Lyu"
+                ],
+                "published": "2025-04-08T07:14:51Z",
+                "updated": "2026-03-05T11:02:15Z",
+                "url": "http://arxiv.org/abs/2504.05738v4",
+                "pdf_url": "https://arxiv.org/pdf/2504.05738v4",
+                "source": "arxiv.org",
+                "primary_category": "cs.SE",
+                "categories": [
+                  "cs.SE"
+                ]
+              },
+              {
+                "arxiv_id": "2405.12433v3",
+                "title": "LLM+Reasoning+Planning for Supporting Incomplete User Queries in Presence of APIs",
+                "summary": "Recent availability of Large Language Models (LLMs) has led to the development of numerous LLM-based approaches aimed at providing natural language interfaces for various end-user tasks. These end-user tasks in turn can typically be accomplished by orchestrating a given set of APIs. In practice, natural language task requests (user queries) are often incomplete, i.e., they may not contain all the information required by the APIs. While LLMs excel at natural language processing (NLP) tasks, they frequently hallucinate on missing information or struggle with orchestrating the APIs. The key idea behind our proposed approach is to leverage logical reasoning and classical AI planning along with an LLM for accurately answering user queries including identification and gathering of any missing information in these queries. Our approach uses an LLM and ASP (Answer Set Programming) solver to translate a user query to a representation in Planning Domain Definition Language (PDDL) via an intermediate representation in ASP. We introduce a special API \"get_info_api\" for gathering missing information. We model all the APIs as PDDL actions in a way that supports dataflow between the APIs. Our approach then uses a classical AI planner to generate an orchestration of API calls (including calls to get_info_api) to answer the user query. Our evaluation results show that our approach significantly outperforms a pure LLM based approach by achieving over 95% success rate in most cases on a dataset containing complete and incomplete single goal and multi-goal queries where the multi-goal queries may or may not require dataflow among the APIs.",
+                "authors": [
+                  "Sudhir Agarwal",
+                  "Anu Sreepathy",
+                  "David H. Alonso",
+                  "Prarit Lamba"
+                ],
+                "published": "2024-05-21T01:16:34Z",
+                "updated": "2025-02-13T11:48:15Z",
+                "url": "http://arxiv.org/abs/2405.12433v3",
+                "pdf_url": "https://arxiv.org/pdf/2405.12433v3",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI"
+                ]
+              },
+              {
+                "arxiv_id": "2304.08244v2",
+                "title": "API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs",
+                "summary": "Recent research has demonstrated that Large Language Models (LLMs) can enhance their capabilities by utilizing external tools. However, three pivotal questions remain unanswered: (1) How effective are current LLMs in utilizing tools? (2) How can we enhance LLMs' ability to utilize tools? (3) What obstacles need to be overcome to leverage tools? To address these questions, we introduce API-Bank, a groundbreaking benchmark, specifically designed for tool-augmented LLMs. For the first question, we develop a runnable evaluation system consisting of 73 API tools. We annotate 314 tool-use dialogues with 753 API calls to assess the existing LLMs' capabilities in planning, retrieving, and calling APIs. For the second question, we construct a comprehensive training set containing 1,888 tool-use dialogues from 2,138 APIs spanning 1,000 distinct domains. Using this dataset, we train Lynx, a tool-augmented LLM initialized from Alpaca. Experimental results demonstrate that GPT-3.5 exhibits improved tool utilization compared to GPT-3, while GPT-4 excels in planning. However, there is still significant potential for further improvement. Moreover, Lynx surpasses Alpaca's tool utilization performance by more than 26 pts and approaches the effectiveness of GPT-3.5. Through error analysis, we highlight the key challenges for future research in this field to answer the third question.",
+                "authors": [
+                  "Minghao Li",
+                  "Yingxiu Zhao",
+                  "Bowen Yu",
+                  "Feifan Song",
+                  "Hangyu Li",
+                  "Haiyang Yu",
+                  "Zhoujun Li",
+                  "Fei Huang",
+                  "Yongbin Li"
+                ],
+                "published": "2023-04-14T14:05:32Z",
+                "updated": "2023-10-25T06:54:12Z",
+                "url": "http://arxiv.org/abs/2304.08244v2",
+                "pdf_url": "https://arxiv.org/pdf/2304.08244v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.CL",
+                "categories": [
+                  "cs.CL",
+                  "cs.AI"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        },
+        {
+          "tool": "explain_terms",
+          "args": {
+            "arxiv_url": "",
+            "terms": [
+              "API key"
+            ],
+            "max_contexts": 3
+          },
+          "result": {
+            "tool": "read_structured_paper",
+            "error": "ValueError",
+            "message": "Invalid arXiv ID or URL"
+          }
+        }
+      ],
+      "artifact_version": "v0+p39ce1a8dbc38+t3d88a34ec2b3",
+      "ended_at": "2026-07-29T17:25:26"
+    }
+  ]
+}
