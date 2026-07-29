@@ -10,6 +10,9 @@ import yaml
 from .clarify.tool import ask_user
 from .papers.tool import arxiv_search
 from .paper_text.tool import get_arxiv_paper_text
+from .paper_reader.tool import read_structured_paper
+from .paper_sections.tool import extract_paper_sections
+from .explain_terms.tool import explain_paper_terms
 from .timeline.tool import get_user_tweets
 from .fetch.tool import read_url
 from .format.tool import render_digest
@@ -35,6 +38,9 @@ TOOL_FUNCTIONS = {
     "policy": search_company_policy,
     "papers": arxiv_search,
     "paper_text": get_arxiv_paper_text,
+    "paper_reader": read_structured_paper,
+    "paper_sections": extract_paper_sections,
+    "explain_terms": explain_paper_terms,
 }
 
 
