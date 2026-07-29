@@ -135,7 +135,7 @@ tools:
       required: [arxiv_url]
 
   - name: paper_sections
-    description: "Đọc paper arXiv và trích bằng chứng riêng cho Method, Experiments, Results và Limitations dựa trên heading của bài. Dùng khi cần tóm tắt phương pháp/kết quả có cấu trúc."
+    description: "Đọc paper arXiv và trích bằng chứng riêng cho Method, Experiments, Results và Limitations dựa trên heading của bài. Một lần gọi luôn trả về cả bốn nhóm; kể cả khi người dùng yêu cầu nhiều nhóm như Method và Results thì chỉ gọi tool đúng một lần cho mỗi paper. Dùng khi cần tóm tắt phương pháp/kết quả có cấu trúc."
     parameters:
       type: object
       properties:
